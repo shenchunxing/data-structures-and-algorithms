@@ -33,6 +33,11 @@ public class _253_会议室_II {
         return room;
     }
 
+    /**
+     * 优先级队列，构建小顶堆
+     * @param intervals
+     * @return
+     */
     public int minMeetingRooms1(int[][] intervals) {
         if (intervals == null || intervals.length == 0) return 0;
 

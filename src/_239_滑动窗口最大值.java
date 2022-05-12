@@ -65,7 +65,6 @@ public class _239_滑动窗口最大值 {
     	for (int ri = 0; ri < nums.length; ri++) {
 			// 只要nums[队尾] <= nums[i]，就删除队尾
     		while (!deque.isEmpty() && nums[ri] >= nums[deque.peekLast()]) {
-    			// deque.pollLast();
     			deque.removeLast();
     		}
     		
@@ -80,7 +79,6 @@ public class _239_滑动窗口最大值 {
     		// 检查队头的合法性
     		if (deque.peekFirst() < li) {
     			// 队头不合法（失效，不在滑动窗口索引范围内）
-    			// deque.pollFirst();
     			deque.removeFirst();
     		}
     		
