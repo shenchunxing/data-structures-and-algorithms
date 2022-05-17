@@ -3,10 +3,19 @@
  */
 public class _206_反转链表 {
 
-	//迭代
-    public ListNode reverseList(ListNode head) {
-    	ListNode prev = null;//指向尾节点
-    	ListNode cur = head;//指向头节点
+	public static void main(String[] args) {
+		ListNode head = new ListNode(3);
+		head.next = new ListNode(2);
+		head.next.next = new ListNode(5);
+		head.next.next.next = new ListNode(4);
+
+		System.out.println(reverseList(head));
+	}
+
+	//迭代：双指针
+   static public ListNode reverseList(ListNode head) {
+    	ListNode prev = null;//前一个指针
+    	ListNode cur = head;//当前指针
     	while (cur != null) {
     		ListNode next = cur.next;
     		cur.next = prev;

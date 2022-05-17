@@ -8,12 +8,14 @@ public class _283_移动零 {
      */
     public void moveZeroes3(int[] nums) {
         int k = 0;
+        //扫描一次，将非0的放到前面
         for(int x : nums) {
             if (x !=0) {
                 nums[k] = x;
                 k++;
             }
         }
+        //再扫描一次，k后面的都填充0
         while (k < nums.length) {
             nums[k] = 0;
             k++;
@@ -33,7 +35,7 @@ public class _283_移动零 {
         }
     }
     
-   //双指针：左指针指向当前已经处理好的序列的尾部，右指针指向待处理序列的头部。
+   //双指针：left指向第一个0的位置，right指向第一个非0的位置
     public void moveZeroes2(int[] nums) {
     	if (nums == null) return;
     	int left = 0;

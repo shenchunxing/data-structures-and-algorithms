@@ -5,7 +5,7 @@
 public class _19_删除链表的倒数第N个结点 {
 	//利用快慢指针，第一个指针指向n+1的位置，第二个指针从头开始
     public ListNode removeNthFromEnd(ListNode head, int n) {
-       ListNode dummy = new ListNode(0);
+       ListNode dummy = new ListNode(0); //哨兵
        dummy.next = head;
        ListNode fast = dummy;
        ListNode slow = dummy;

@@ -3,7 +3,7 @@ import java.util.Stack;
 /**
  * https://leetcode.cn/problems/cong-wei-dao-tou-da-yin-lian-biao-lcof/
  */
-public class _剑指Offer06_从尾到头打印链表 {
+public class 剑指Offer06_从尾到头打印链表 {
     //栈
     public int[] reversePrint(ListNode head) {
         Stack<ListNode> stack = new Stack<>();
