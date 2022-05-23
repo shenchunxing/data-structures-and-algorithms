@@ -12,6 +12,13 @@ public class 剑指Offer34_二叉树中和为某一值的路径 {
         return lists;
     }
 
+    /**
+     * 递归搜索符合remain的情况
+     * @param node
+     * @param remain
+     * @param nums
+     * @param lists
+     */
     private void dfs(TreeNode node, int remain , List<Integer> nums , List<List<Integer>> lists) {
         if (node == null) return;//退出递归
         remain -= node.val; //剩余值

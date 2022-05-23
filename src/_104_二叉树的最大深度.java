@@ -26,26 +26,18 @@ import common.TreeNode;
  */
 public class _104_二叉树的最大深度 {
 	
-	//左右子树的较高者 + 1
+	//递归：左右子树的较高者 + 1(后序遍历)
 	public int maxDepth1(TreeNode root) {
-
-		if (root == null) {
-			return 0;
-		} else {
-			int leftDepth = maxDepth1(root.left);
-			int rightDepth = maxDepth1(root.right);
-			
-			return Math.max(leftDepth, rightDepth) + 1;
-		}
+		if (root == null) return 0;
+		int leftDepth = maxDepth1(root.left);
+		int rightDepth = maxDepth1(root.right);
+		return Math.max(leftDepth, rightDepth) + 1;
     }
 
-	//二叉树的层级遍历
+	//bfs：二叉树的层级遍历
 	public int maxDepth2(TreeNode root) {
-		if (root == null) {
-			return 0;
-		}
-		
-		Queue<TreeNode> queue = new LinkedList<TreeNode>();
+		if (root == null) return 0;
+		Queue<TreeNode> queue = new LinkedList<TreeNode>(); //队列里面存放的是当前层的所有节点
 		queue.add(root);
 		int ans = 0;
 		while (!queue.isEmpty()) {
@@ -61,7 +53,7 @@ public class _104_二叉树的最大深度 {
 				}
 				size --;
 			}
-			ans ++;
+			ans ++;//走完一层，ans++
 		}
 		return ans;
 	}
