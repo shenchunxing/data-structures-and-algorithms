@@ -21,13 +21,13 @@ public class _72_编辑距离 {
     	// 其他行其他列
     	for (int i = 1; i <= cs1.length; i++) {
 			for (int j = 1; j <= cs2.length; j++) {
-				int top = dp[i - 1][j] + 1; 
-				int left = dp[i][j - 1] + 1;
-				int leftTop = dp[i - 1][j - 1];
-				if (cs1[i - 1] != cs2[j - 1]) {
+				int top = dp[i - 1][j] + 1; //上面
+				int left = dp[i][j - 1] + 1;//左边
+				int leftTop = dp[i - 1][j - 1]; //左上角
+				if (cs1[i - 1] != cs2[j - 1]) {//最后一个元素不相等
 					leftTop++;
 				}
-				dp[i][j] = Math.min(Math.min(top, left), leftTop);
+				dp[i][j] = Math.min(Math.min(top, left), leftTop);//取三者最小值
 			}
 		}
     	return dp[cs1.length][cs2.length];
