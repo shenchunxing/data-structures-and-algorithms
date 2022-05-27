@@ -4,7 +4,7 @@
  * @author MJ
  *
  */
-public class _0075_颜色分类 {
+public class _75_颜色分类 {
 
 	///3指针
     public void sortColors(int[] nums) {

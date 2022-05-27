@@ -5,7 +5,7 @@
  *
  */
 
-public class _0002_两数相加 {
+public class _2_两数相加 {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		if (l1 == null) return l2;
 		if (l2 == null) return l1;

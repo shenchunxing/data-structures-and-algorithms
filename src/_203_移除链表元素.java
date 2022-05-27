@@ -6,7 +6,7 @@ import java.util.Iterator;
  * @author MJ
  *
  */
-public class _0203_移除链表元素 {
+public class _203_移除链表元素 {
 	//构建一条全新的链表
 	public ListNode removeElements1(ListNode head, int val) {
 		if (head == null) return null;

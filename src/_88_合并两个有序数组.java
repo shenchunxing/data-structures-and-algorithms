@@ -4,7 +4,7 @@
  * @author MJ
  *
  */
-public class _0088_合并两个有序数组 {
+public class _88_合并两个有序数组 {
 	/**
 	 * 双指针法
 	 * nums1数组更大，nums2合并到nums1，从尾部开始比较

@@ -4,7 +4,7 @@
  * @author MJ
  *
  */
-public class _0234_回文链表 {
+public class _234_回文链表 {
 	//要求空间复杂度O(1),如果没有要求，可以直接翻转链表，一个个对比
 	/**
 	 * 利用快慢指针找到中间节点，反转右侧链表后每个节点和左侧节点比较
@@ -79,7 +79,7 @@ public class _0234_回文链表 {
 //		head.next.next.next.next = new ListNode(1);
 		System.out.println(head);
 		
-		_0234_回文链表 obj = new _0234_回文链表();
+		_234_回文链表 obj = new _234_回文链表();
 		obj.isPalindrome(head);
 		
 		System.out.println(head);

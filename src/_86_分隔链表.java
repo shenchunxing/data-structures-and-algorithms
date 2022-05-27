@@ -4,7 +4,7 @@
  * @author MJ
  *
  */
-public class _0086_分隔链表 {
+public class _86_分隔链表 {
 	public ListNode partition(ListNode head, int x) {
 		if (head == null) return null;
 		ListNode lHead = new ListNode(0); //左链表的头
