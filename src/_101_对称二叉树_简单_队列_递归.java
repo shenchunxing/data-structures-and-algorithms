@@ -6,7 +6,7 @@ import java.util.Queue;
 /**
  * https://leetcode.cn/problems/symmetric-tree/
  */
-public class _101_对称二叉树 {
+public class _101_对称二叉树_简单_队列_递归 {
     /**
      * 递归 O(n) O(n)
      */
@@ -31,20 +31,20 @@ public class _101_对称二叉树 {
      * 比较两颗一样的树
      */
     private boolean isSymmetric2(TreeNode p , TreeNode q) {
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.add(p);
-        queue.add(q);
-        while (!queue.isEmpty()) {
-            p = queue.poll();
-            q = queue.poll();
-            if (p == null && q == null) continue;
-            if (p == null || q == null) return false;
-            if (p.val != q.val) return false;
-            queue.add(p.left);
-            queue.add(q.right);
-            queue.add(p.right);
-            queue.add(q.left);
-        }
+       Queue<TreeNode> queue = new LinkedList<>();
+       queue.offer(p);
+       queue.offer(q);
+       while (!queue.isEmpty()) {
+           p = queue.poll();
+           q = queue.poll();
+           if (p == null && q == null) continue;
+           if (p == null || q == null) return false;
+           if (p.val != q.val) return false;
+           queue.add(p.left);
+           queue.add(q.right);
+           queue.add(p.right);
+           queue.add(q.left);
+       }
         return true;
     }
 }

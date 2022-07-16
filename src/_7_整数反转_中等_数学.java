@@ -1,7 +1,7 @@
 /**
  * https://leetcode-cn.com/problems/reverse-integer/
  */
-public class _7_整数反转 {
+public class _7_整数反转_中等_数学 {
 
     //数学：时间复杂度O(logN),空间复杂度O(1)
     public static int reverse(int x) {

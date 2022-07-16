@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * https://leetcode-cn.com/problems/3sum/
  */
-public class _15_三数之和 {
+public class _15_三数之和_中等_排序双指针 {
     //排序+ 双指针: 时间复杂度O(N^2),空间复杂度O(logN)
     public List<List<Integer>> threeSum(int[] nums) {
         if (nums == null) return null;

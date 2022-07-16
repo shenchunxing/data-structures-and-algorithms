@@ -24,7 +24,7 @@ import common.TreeNode;
  * 
  *
  */
-public class _104_二叉树的最大深度 {
+public class _104_二叉树的最大深度_简单_bfs_递归 {
 	
 	//递归：左右子树的较高者 + 1(后序遍历)
 	public int maxDepth1(TreeNode root) {

@@ -1,8 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -27,7 +23,7 @@ import java.util.Map;
  * 输出：[0,1]
  */
 
-public class _1_两数之和 {
+public class _1_两数之和_简单_哈希表 {
     //哈希表
     public static int[] twoSum(int[] nums, int target) {
         if (nums == null) return null;

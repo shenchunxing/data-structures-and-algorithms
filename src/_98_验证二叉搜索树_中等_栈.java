@@ -1,28 +1,28 @@
 import common.TreeNode;
 
-import java.util.Deque;
 import java.util.Stack;
 
 /**
  * https://leetcode.cn/problems/validate-binary-search-tree/
  * 给你一个二叉树的根节点 root ，判断其是否是一个有效的二叉搜索树。
  */
-public class _98_验证二叉搜索树 {
+public class _98_验证二叉搜索树_中等_栈 {
     /**
      * 中序遍历的结果如果是递增的就是二叉搜索树 O(n) O(n)
      */
     public boolean isValidBST(TreeNode root) {
+        if (root == null) return true;
         Stack<TreeNode> stack = new Stack<>();
         double inorder = -Double.MAX_VALUE;
         while (!stack.isEmpty() || root != null) {
-            while (root != null) { //左子树走到底
+            while (root != null) {
                 stack.push(root);
                 root = root.left;
             }
-            root = stack.pop();//弹出栈顶
-            // 如果中序遍历得到的节点的值小于等于前一个 inorder，说明不是二叉搜索树
-            if (root.val <= inorder) return false;
-            inorder = root.val;//保留上一个弹出的值
+            root = stack.pop();
+            //中序遍历从小到大
+            if (inorder >= root.val) return false;
+            inorder = root.val;//保留当前值，下次可以比较
             root = root.right;
         }
         return true;
