@@ -1,7 +1,7 @@
 /**
- * https://leetcode.cn/problems/word-search/
+ * https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/
  */
-public class _79_单词搜索 {
+public class 剑指Offer12_矩阵中的路径_中等_dfs {
     public boolean exist(char[][] board, String word) {
         char[] words = word.toCharArray();
         for (int i = 0; i < board.length; i++) {
@@ -29,9 +29,9 @@ public class _79_单词搜索 {
         if (k == word.length - 1) return true;
         board[i][j] = '\0';//元素已经被访问过
         boolean res = dfs(board,word,i + 1,j , k +1) || //从下搜索
-                dfs(board,word,i - 1,j , k +1) || //从上搜索
-                dfs(board,word,i,j + 1 , k +1) || //从右搜索
-                dfs(board,word,i,j - 1 , k +1) ; //从左搜索
+                      dfs(board,word,i - 1,j , k +1) || //从上搜索
+                      dfs(board,word,i,j + 1 , k +1) || //从右搜索
+                      dfs(board,word,i,j - 1 , k +1) ; //从左搜索
         board[i][j] = word[k]; //回溯：还原当前矩阵元素
         return res;
     }

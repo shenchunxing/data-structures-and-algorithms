@@ -9,36 +9,22 @@ public class 面试题_16_16_部分排序 {
 	 * { 1, 5, 4, 3, 2, 6, 7 }
 	 */
 	
-    public int[] subSort(int[] nums) {
-    	if (nums.length == 0) return new int[] { -1, -1 };
-    	
-    	// 从左扫描到右寻找逆序对（正序：逐渐变大）
-    	int max = nums[0];
-    	// 用来记录最右的那个逆序对位置
-    	int r = -1;
-    	for (int i = 1; i < nums.length; i++) {
-			if (nums[i] >= max) {
-				max = nums[i];
+    public int[] subSort(int[] array) {
+		if (array == null || array.length == 0) return new int[]{-1,-1};
+		int max = array[0] , r = -1;
+		for (int i = 1; i < array.length; i++) {
+			if (array[i] >= max) max = array[i];
+			else r = i; //找到从左往右扫描的最后一次逆序位置
+		}
+
+		int min = array[array.length - 1] , l = -1;
+		for (int j = array.length - 2; j >= 0 ; j--) {
+			if (array[j] > min) {
+				l = j; //找到从右往左扫描的最后一次逆序位置
 			} else {
-				r = i; //逆序
+				min = array[j];
 			}
 		}
-    	
-    	// 没有找到逆序对，说明是正序的，直接提前结束
-    	if (r == -1) return new int[] { -1, -1 };
-    	
-    	// 从右扫描到左寻找逆序对（正序：逐渐变小）
-    	int min = nums[nums.length - 1];
-    	// 用来记录最左的那个逆序对位置
-    	int l = -1;
-    	for (int i = nums.length - 2; i >= 0; i--) {
-			if (nums[i] <= min) {
-				min = nums[i];
-			} else {
-				l = i; //逆序
-			}
-		}
-    	
-        return new int[] { l, r };
+		return new int[]{l ,r};
     }
 }

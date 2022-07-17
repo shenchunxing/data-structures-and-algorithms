@@ -64,4 +64,17 @@ public class 剑指Offer10_I_斐波那契数列 {
         }
         return array[n & 1];
     }
+
+    public int fib4(int n) {
+        if (n == 0 ) return 0;
+        if (n <= 2) return 1;
+        int first = 1;
+        int second = 1;
+        for (int i = 3 ;i<= n; i++) {
+            int temp = second % 1000000007; //保留上一次的值
+            second = first % 1000000007 + second % 1000000007; //当前和
+            first = temp;//前一次的和
+        }
+        return second % 1000000007;
+    }
 }
