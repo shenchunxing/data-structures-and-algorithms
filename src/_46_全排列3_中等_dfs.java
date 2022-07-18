@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * https://leetcode-cn.com/problems/permutations/
  */
-public class _46_全排列3 {
+public class _46_全排列3_中等_dfs {
     public List<List<Integer>> permute(int[] nums) {
         if (nums == null) return null;
         List<List<Integer>> list = new ArrayList<>();

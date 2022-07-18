@@ -38,8 +38,9 @@ public class _32_最长有效括号 {
     //动态规划O(n) O(n)
     public int longestValidParentheses2(String s) {
         int maxans = 0;
-        int[] dp = new int[s.length()];//dp[i]表示以i结尾的最长有效括号的长度
-        for (int i = 1; i < s.length(); i++) {
+        int len = s.length();
+        int[] dp = new int[len];//dp[i]表示以i结尾的最长有效括号的长度
+        for (int i = 1; i < len; i++) {
             if (s.charAt(i) == ')') { //当前必须是右括号
                 if (s.charAt(i - 1) == '(') { //如果上一个恰好是左括号，则拿到dp[i - 2]的值 + 2
                     dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;

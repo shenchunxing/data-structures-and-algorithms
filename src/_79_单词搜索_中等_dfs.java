@@ -1,7 +1,7 @@
 /**
  * https://leetcode.cn/problems/word-search/
  */
-public class _79_单词搜索 {
+public class _79_单词搜索_中等_dfs {
     public boolean exist(char[][] board, String word) {
         char[] words = word.toCharArray();
         for (int i = 0; i < board.length; i++) {

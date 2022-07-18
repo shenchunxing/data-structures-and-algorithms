@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * https://leetcode-cn.com/problems/permutations/
  */
-public class _46_全排列 {
+public class _46_全排列_中等_dfs {
     private List<List<Integer>> list;
     private int[] nums;
     /** 用来保存每一层选择的数字 */

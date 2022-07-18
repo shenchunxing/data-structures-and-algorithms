@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -7,43 +8,31 @@ import java.util.List;
 public class _47_全排列II {
     public List<List<Integer>> permuteUnique(int[] nums) {
         if (nums == null) return null;
-        List<List<Integer>> list = new ArrayList<>();
-        if (nums.length == 0) return list;
-        dfs(0, nums, list);
-        return list;
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
+        boolean[] used = new boolean[nums.length];
+        Arrays.sort(nums);
+        dfs(nums,0,ans,path,used);
+        return ans;
     }
 
-    private void dfs(int idx, int[] nums, List<List<Integer>> list) {
-        // 不能再往下搜索
+    private void dfs(int[] nums, int idx, List<List<Integer>> ans, List<Integer> path, boolean[] used) {
         if (idx == nums.length) {
-            List<Integer> result = new ArrayList<>();
-            for (int value : nums) {
-                result.add(value);
-            }
-            list.add(result);
+            ans.add(new ArrayList<>(path));
             return;
         }
-
-        // 枚举这一层所有可以做出的选择
-        for (int i = idx; i < nums.length; i++) {
-            // 要保证一个数字在idx位置只会出现一次
-            if (isRepeat(nums, idx, i)) continue;
-            swap(nums, idx, i);
-            dfs(idx + 1, nums, list);
-            swap(nums, idx, i);
+        for (int i = 0; i < nums.length; i++) {
+            //已经被使用过，直接跳过
+            //和上一个重复了，我们规定相同的数以第一次出现的为结果，其他情况都过滤掉，上一次没选，这次直接过滤掉
+            if (used[i] || (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])) {
+                continue;
+            }
+            path.add(nums[i]);
+            used[i] = true;
+            dfs(nums,idx + 1,ans,path,used);//下一层
+            used[i] = false;
+            path.remove(idx);//回溯
         }
-    }
-    private boolean isRepeat(int[] nums, int idx, int i) {
-        for (int j = idx; j < i; j++) {
-            if (nums[j] == nums[i]) return true;
-        }
-        return false;
-    }
-
-    private void swap(int[] nums, int i, int j) {
-        int tmp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = tmp;
     }
 
     public static void main(String[] args) {

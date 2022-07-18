@@ -5,7 +5,7 @@
  * @author shenchunxing
  *
  */
-public class _21_合并两个有序链表 {
+public class _21_合并两个有序链表_简单_指针 {
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 		ListNode newHead = new ListNode(-1);
 		ListNode pre = newHead;

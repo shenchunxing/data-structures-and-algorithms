@@ -5,7 +5,7 @@ import common.TreeNode;
  * @author shenchunxing
  *
  */
-public class _100_相同的树 {
+public class _100_相同的树_简单_dfs {
 	 public boolean isSameTree(TreeNode p, TreeNode q) {
 		 if (p == null && q == null) return true;
 		 if (p== null && q != null) return false;

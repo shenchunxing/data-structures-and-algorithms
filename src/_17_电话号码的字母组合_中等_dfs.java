@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
  */
-public class _17_电话号码的字母组合 {
+public class _17_电话号码的字母组合_中等_dfs {
     private char[][] lettersArray = {
             {'a', 'b', 'c'}, {'d', 'e', 'f'}, {'g', 'h', 'i'},
             {'j', 'k', 'l'}, {'m', 'n', 'o'}, {'p', 'q', 'r', 's'},

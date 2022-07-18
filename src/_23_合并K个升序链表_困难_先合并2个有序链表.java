@@ -5,7 +5,7 @@
  * @author shenchunxing
  *
  */
-public class _23_合并K个升序链表 {
+public class _23_合并K个升序链表_困难_先合并2个有序链表 {
 	public ListNode mergeKLists(ListNode[] lists) {
 		ListNode ans = null;
 		//两两合并

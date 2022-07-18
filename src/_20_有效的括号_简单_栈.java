@@ -1,6 +1,4 @@
-import java.util.Deque;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 import java.util.Stack;
 
@@ -35,7 +33,7 @@ import java.util.Stack;
  * 输入：s = "{[]}"
  * 输出：true
  */
-public class _20_有效的括号 {
+public class _20_有效的括号_简单_栈 {
 
     //原理：遇到了右括号，则必须和栈顶元素匹配，匹配成功后，移除掉，否则就是false
 //    public boolean isValid(String s) {
@@ -62,7 +60,7 @@ public class _20_有效的括号 {
 //    }
 
 	public static void main(String[] args) {
-		_20_有效的括号 o = new _20_有效的括号();
+		_20_有效的括号_简单_栈 o = new _20_有效的括号_简单_栈();
 		System.out.println(o.isValid("(("));
 	}
 

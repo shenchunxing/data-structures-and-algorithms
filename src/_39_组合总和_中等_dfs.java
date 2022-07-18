@@ -6,7 +6,7 @@ import java.util.*;
  * candidates中的数字可以无限制重复被选取。
  */
 
-public class _39_组合总和 {
+public class _39_组合总和_中等_dfs {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         if (candidates == null || candidates.length == 0) return new ArrayList<>();
         Arrays.sort(candidates); //排序

@@ -3,23 +3,18 @@
  * @author shenchunxing
  *
  */
-public class _74_搜索二维矩阵 {
+public class _74_搜索二维矩阵_中等_先找行再找列二分搜索 {
 	public boolean searchMatrix(int[][] matrix, int target) {
 
+		//找到行
 		int rowIndex = binarySearchFirstCol(matrix, target);
 		if (rowIndex  <0) {
 			return false;
 		}
-		
+		//找到列
 		return binarySearchRow(matrix[rowIndex], target);
     }
-	
-	/**
-	 * 过滤掉不符合的行，找到可能存在target的行
-	 * @param matrix
-	 * @param target
-	 * @return
-	 */
+	//找到所在的行
 	private int binarySearchFirstCol(int[][] matrix , int target) {
 		int low = -1 , high = matrix.length - 1;
 		while (low < high) {
@@ -33,12 +28,7 @@ public class _74_搜索二维矩阵 {
 		return low;
 	}
 	
-	/**
-	 * 查找行里面是否存在target
-	 * @param row
-	 * @param target
-	 * @return
-	 */
+	//找到所在的列
 	private boolean binarySearchRow(int[] row , int target) {
 		int low = 0,high = row.length - 1;
 		while (low <= high) {

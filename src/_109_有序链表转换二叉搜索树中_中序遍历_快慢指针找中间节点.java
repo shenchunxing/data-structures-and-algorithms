@@ -3,7 +3,7 @@ import common.TreeNode;
 /**
  * https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree/
  */
-public class _109_有序链表转换二叉搜索树 {
+public class _109_有序链表转换二叉搜索树中_中序遍历_快慢指针找中间节点 {
     //分治 + 中序遍历优化：O(n) O(logn)
     ListNode globalHead;
     public TreeNode sortedListToBST(ListNode head) {
@@ -42,26 +42,20 @@ public class _109_有序链表转换二叉搜索树 {
     public TreeNode sortedListToBST1(ListNode head) {
         return buildTree(head,null);
     }
-
-    /**
-     * 构建bst树
-     */
-    private TreeNode buildTree(ListNode left , ListNode right) {
-         if (left == right) return null; //递归出口
-         ListNode mid = getMedia(left,right);
-         TreeNode root = new TreeNode(mid.val);
-         root.left = buildTree(left,mid); //递归构建左右子树
-         root.right = buildTree(mid.next,right);
-         return root;
+    private TreeNode buildTree(ListNode left, ListNode right) {
+        if (left == right) return null;
+        ListNode mid = mid(left,right);
+        TreeNode root = new TreeNode(mid.val);
+        root.left = buildTree(left,mid);
+        root.right = buildTree(mid.next,right);
+        return root;
     }
 
-    /**
-     * 快慢指针找到中间节点
-     */
-    private ListNode getMedia(ListNode left , ListNode right) {
-        ListNode fast = left;
-        ListNode slow = left;
-        while (fast != right && fast.next != right)  {
+    //快慢指针找出中间节点
+    private ListNode mid(ListNode left, ListNode right) {
+        ListNode fast = left, slow = fast;
+        //为了适配奇偶性
+        while (fast != null && fast.next != null) {
             fast = fast.next;
             fast = fast.next;
             slow = slow.next;

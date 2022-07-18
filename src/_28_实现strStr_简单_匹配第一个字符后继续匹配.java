@@ -3,7 +3,7 @@
  * 给你两个字符串haystack 和 needle ，请你在 haystack 字符串中找出 needle 字符串出现的第一个位置（下标从 0 开始）。
  * 如果不存在，则返回 -1
  */
-public class _28_实现strStr {
+public class _28_实现strStr_简单_匹配第一个字符后继续匹配 {
     public int strStr(String haystack, String needle) {
        int n = haystack.length() , m = needle.length();
        char[] s = haystack.toCharArray() , p = needle.toCharArray();

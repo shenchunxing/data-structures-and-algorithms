@@ -6,9 +6,9 @@ import java.util.*;
  * candidates中的每个数字在每个组合中只能使用一次。
  * 注意：解集不能包含重复的组合。
  */
-public class _40_组合总和II {
+public class _40_组合总和II_中等_dfs {
     public static void main(String[] args) {
-        _40_组合总和II ob = new _40_组合总和II();
+        _40_组合总和II_中等_dfs ob = new _40_组合总和II_中等_dfs();
         System.out.println(ob.combinationSum2(new int[] {10,1,2,7,6,1,5} , 8));
     }
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
