@@ -8,33 +8,29 @@ import java.util.*;
 
 public class _39_组合总和 {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        List<List<Integer>> lists = new LinkedList<>();
-        if (candidates == null || candidates.length == 0) return lists;
-        //排序
-        Arrays.sort(candidates);
+        if (candidates == null || candidates.length == 0) return new ArrayList<>();
+        Arrays.sort(candidates); //排序
+        List<List<Integer>> lists = new ArrayList<>();
         Deque<Integer> deque = new LinkedList<>();
-        dfs(candidates , candidates.length , target , 0 , deque , lists);
+        dfs(candidates,candidates.length,target,0,lists,deque);
         return lists;
     }
 
-    private void dfs(int[] candidates ,
-                     int len ,
-                     int residue ,
-                     int begin ,
-                     Deque<Integer> path ,
-                     List<List<Integer>> lists) {
-        if (residue == 0) {
-            lists.add(new ArrayList<>(path));
+    private void dfs(int[] candidates, int len, int remain, int begin , List<List<Integer>> lists,
+                     Deque<Integer> deque) {
+        if (remain == 0) { //剩余为0，返回一个解
+            lists.add(new ArrayList<>(deque));
             return;
         }
-        for (int i = begin  ; i < len ; i++) {
-            //在数组有序的前提下剪支
-            if (residue - candidates[i] < 0) {
-                break;
-            }
-            path.addLast(candidates[i]);
-            dfs(candidates , len , residue - candidates[i] , i ,path , lists );
-            path.removeLast(); //回溯
+        //遍历每一个元素，选中后进入下一层，发现不对，则回溯重新选择
+        for (int i = begin; i < len; i++) {
+            //当前值比剩余的总值都要大了，直接剪枝
+            if (candidates[i] > remain) break;
+            //添加进结果队列
+            deque.add(candidates[i]);
+            //进入下一层：剩余距离target的值是remain - candidates[i]
+            dfs(candidates,len,remain - candidates[i],i,lists,deque);
+            deque.removeLast(); //回溯
         }
     }
 }

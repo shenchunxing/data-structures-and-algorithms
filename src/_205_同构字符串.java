@@ -9,26 +9,18 @@ import java.util.Map;
  */
 public class _205_同构字符串 {
 	public boolean isIsomorphic(String s, String t) {
-		if (s.length() != t.length()) return false;
-		
-        Map<Character, Character> s_tMap = new HashMap<>(); 
-        Map<Character, Character> t_sMap = new HashMap<>();
-        int len = s.length();
-        for (int i = 0; i < len; i++) {
+		if (s.length() != t.length()) return false; //长度不同，肯定不是同构字符串
+		int len = s.length();
+		Map<Character,Character> sMap = new HashMap<>();
+		Map<Character,Character> tMap = new HashMap<>();
+		for (int i = 0; i < len; i++) {
 			char x = s.charAt(i);
 			char y = t.charAt(i);
-			//x和y的映射已经存在，但是通过x获取到的却不是y
-			if ((s_tMap.containsKey(x) && s_tMap.get(x) != y) || (t_sMap.containsKey(y) && t_sMap.get(y) != x)) {
-				 return false;
-			}
-			
-			s_tMap.put(x, y); //每次更新x和y的映射
-			t_sMap.put(y, x);
+			if (sMap.containsKey(x) && sMap.get(x) != y) return false;//x和y的映射已经存在，但是通过x获取到的却不是y
+			if (tMap.containsKey(y) && tMap.get(y) != x) return false;
+			sMap.put(x,y);//s字符串当前扫描的字符x映射成y，同时t字符串当前扫描的字符y映射成x
+			tMap.put(y,x);
 		}
-        return true;
+		return true;
     }
-
-	public static void main(String[] args) {
-
-	}
 }

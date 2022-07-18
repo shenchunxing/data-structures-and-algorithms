@@ -23,19 +23,20 @@ import java.util.Map;
  * 输出：[0,1]
  */
 
+<<<<<<< HEAD:src/_1_两数之和.java
+public class _1_两数之和 {
+=======
 public class _1_两数之和_简单_哈希表 {
     //哈希表
+>>>>>>> 7eddaf52c603911ad67def017835327ddfb51d34:src/_1_两数之和_简单_哈希表.java
     public static int[] twoSum(int[] nums, int target) {
-        if (nums == null) return null;
-        // 用来存放之前扫描过的元素
-        Map<Integer, Integer> map = new HashMap<>();
+        if (nums.length == 0 || nums == null) return new int[]{0,0};
+        Map<Integer,Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            //从map中查找到符合条件的下标
-            Integer idx = map.get(target - nums[i]); 
-            if (idx != null) return new int[]{idx, i};
-            //每次将下标和值放入map。
-            map.put(nums[i], i);
+            Integer index = map.get(target - nums[i]);
+            if (index !=  null) return new int[] {index , i};
+            map.put(nums[i],i);
         }
-        return null;
+        return new int[]{0,0};
     }
 }

@@ -12,37 +12,7 @@ public class _17_电话号码的字母组合 {
     };
     private char[] chars;//字符数组
     private char[] string; //每一个解
-    private List<String> list; //最终答案
-
-//    public List<String> letterCombinations(String digits) {
-//        if (digits == null) return null;
-//        list = new ArrayList<>();
-//        chars = digits.toCharArray(); //字符数组
-//        if (chars.length == 0) return list;
-//        string = new char[chars.length];
-//        dfs(0);
-//        return list;
-//    }
-//
-//    /**
-//     * @param idx 正在搜索第idx层
-//     */
-//    private void dfs(int idx) {
-//        //最后一层是idx == chars.length -1 ；
-//    	//idx == chars.length表示找到了一个解
-//        if (idx == chars.length) {
-//            // 得到了一个正确的解
-//            list.add(new String(string));
-//            return;
-//        }
-//
-//        // 先枚举这一层可以做的所有选择
-//        char[] letters = lettersArray[chars[idx] - '2'];
-//        for (char letter : letters) {
-//            string[idx] = letter; //选中一个，进入下一层
-//            dfs(idx + 1);
-//        }
-//    }
+    private List<String> list;
 
     public List<String> letterCombinations(String digits) {
     	if (digits == null) return null;
