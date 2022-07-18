@@ -9,6 +9,7 @@ public class _16_最接近的三数之和 {
 	//排序 + 双指针 ： 时间复杂度O(n^2) , 空间复杂度O(logN)
 	 public int threeSumClosest(int[] nums, int target) {
 		 Arrays.sort(nums); //排序
+		 //默认前3个数
 		 int ans = nums[0] + nums[1] + nums[2];
 		 for (int i = 0; i < nums.length; i++) {
 			 //从第二个开始遍历

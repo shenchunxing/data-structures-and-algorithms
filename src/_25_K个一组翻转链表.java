@@ -4,28 +4,22 @@
  */
 public class _25_K个一组翻转链表 {
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null || head.next == null) return head;
+        if (head == null) return head;
         ListNode tail = head;
         for (int i = 0; i < k; i++) {
-            //因为tail一直在遍历，如果为空了，说明没有到达k长度，就结束了，剩余的节点太少不足翻转链表
-            if (tail == null) return head;
+            if (tail == null) return head; //链表长度太短，不足以翻转
             tail = tail.next;
         }
-        //翻转前k个元素
-        ListNode newHead = reverse(head,tail);
-        //下一轮开始的地方就是tail
-        head.next = reverseKGroup(tail,k);
+        ListNode newHead = reverse(head,tail);//翻转前k个元素
+        head.next = reverseKGroup(tail,k);//下一轮开始的地方就是tail
         return newHead;
     }
 
-    /**
-     * 翻转指定位置的链表
-     */
-    private ListNode reverse(ListNode head , ListNode tail) {
+    //翻转指定区域的链表
+    private ListNode reverse(ListNode head, ListNode tail) {
         ListNode prev = null;
-        ListNode temp = null;
-        while (head != tail) { //head != tail
-            temp = head.next;
+        while (head != tail) {
+            ListNode temp = head.next;
             head.next = prev;
             prev = head;
             head = temp;

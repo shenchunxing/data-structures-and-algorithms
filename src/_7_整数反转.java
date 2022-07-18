@@ -5,17 +5,16 @@ public class _7_整数反转 {
 
     //数学：时间复杂度O(logN),空间复杂度O(1)
     public static int reverse(int x) {
-        int rev = 0;
-        while (x != 0) {
-            if (rev < Integer.MIN_VALUE / 10  || rev > Integer.MAX_VALUE / 10)  {
-                return  0;
-            }
-            int digital = x % 10; //得到最后那个数
-            x /= 10;//弹出最后那个数
-            rev = rev * 10 + digital;//推入
-        }
-        return  rev;
+       int ans = 0;
+       while (x != 0) {
+           if (ans > Integer.MAX_VALUE / 10 || (ans  < Integer.MIN_VALUE / 10)) return 0; //防止越界
+           int digital = x % 10; //分离出最右那位
+           x /= 10;//去掉最右那位
+           ans = 10 * ans + digital;//得到解
+       }
+       return ans;
     }
+
     public static int reverse1(int x) {
         long res = 0;
         while (x != 0) {

@@ -12,16 +12,10 @@ public class _23_合并K个升序链表 {
 		for (int i = 0; i < lists.length; i++) {
 			ans = mergeTwoLists(ans , lists[i]);
 		}
-		
 		return ans;
     }
-	
-	/**
-	 * 合并两个有序链表
-	 * @param a
-	 * @param b
-	 * @return
-	 */
+
+	//合并两个有序链表
 	private ListNode mergeTwoLists(ListNode a , ListNode b) {
 		ListNode preHead = new ListNode(-1);
 		ListNode prev = preHead;

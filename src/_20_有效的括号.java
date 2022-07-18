@@ -41,18 +41,16 @@ public class _20_有效的括号 {
 //    public boolean isValid(String s) {
 //        int n = s.length();
 //        if (n % 2 == 1) return false;
-//
-//        Map<Character , Character> pairs = new HashMap<>();
-//        pairs.put(')','(');
-//        pairs.put(']','[');
-//        pairs.put('{','}');
-//
+//        Map<Character , Character> map = new HashMap<>();
+//		map.put(')','(');
+//		map.put(']','[');
+//		map.put('{','}');
 //        Deque<Character> stack = new LinkedList<>();
 //        for (int i = 0 ; i < n ;i++) {
 //            char ch = s.charAt(i);
-//            if (pairs.containsKey(ch)) { //是右括号
+//            if (map.containsKey(ch)) { //右括号
 //                //空栈 或者 栈顶元素不匹配该右括号对应的左括号
-//                if (stack.isEmpty() || stack.peek() != pairs.get(ch)) {
+//                if (stack.isEmpty() || stack.peek() != map.get(ch)) {
 //                    return false;
 //                }
 //                stack.pop();
@@ -62,7 +60,12 @@ public class _20_有效的括号 {
 //        }
 //        return stack.isEmpty();
 //    }
-	
+
+	public static void main(String[] args) {
+		_20_有效的括号 o = new _20_有效的括号();
+		System.out.println(o.isValid("(("));
+	}
+
 	 public boolean isValid(String s) {
 		 if (s == null || s.length() ==0 ) return false;
 		 if (s.length() % 2 != 0) return false;
@@ -70,19 +73,16 @@ public class _20_有效的括号 {
 		 map.put('}', '{');
 		 map.put(')', '(');
 		 map.put(']', '[');
-		 
 		 Stack<Character> stack = new Stack<>();
 		 for (int i = 0; i < s.length(); i++) {
-			char c = s.charAt(i);
-			if (map.containsKey(c)) {
-				if (map.get(c) != stack.peek() || stack.isEmpty()) {
-					return false;
-				}
-				stack.pop();
-			} else {
+			 char c = s.charAt(i);
+			 if (map.containsKey(c)) { //右括号
+				 if (stack.isEmpty() || map.get(c) != stack.peek())  return false;
+				 stack.pop(); //出栈
+			 } else { //左括号
 				 stack.push(c);
-			}
-		} 
-		 return true;
+			 }
+		 }
+		 return stack.isEmpty();
 	 }
 }

@@ -25,27 +25,19 @@ import java.util.Iterator;
  *
  */
 public class _121_买卖股票的最佳时机 {
-	//比较法
-    static  public int maxProfit(int[] prices) {
+    public int maxProfit(int[] prices) {
     	if (prices == null || prices.length == 0) return 0;
-    	// 前面扫描过的最小价格
-    	int minPrice = prices[0];
-    	// 前面扫描过的最大利润
-    	int maxProfit = 0;
-    	// 扫描所有的价格
-    	for (int i = 1; i < prices.length; i++) {
-			if (prices[i] < minPrice) { //更新最小价格
+		int maxProfit = 0; //最大利润
+		int minPrice = prices[0]; //最小价格
+		for (int i = 0; i < prices.length; i++) {
+			if (prices[i] < minPrice) {
 				minPrice = prices[i];
-			} else { // 把第i天的股票卖出，更新最大利润和最小价格的差值
-				maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+			} else  {
+				maxProfit = Math.max(maxProfit,prices[i] - minPrice); //差价最大的时候出手就可以获取最大利润
 			}
 		}
-    	return maxProfit;
+		return maxProfit;
     }
-
-	public static void main(String[] args) {
-		System.out.println(maxProfit(new int[] { 1,5,4,7,3,2 }));
-	}
 }
 
 
