@@ -33,10 +33,10 @@ public class InsertionSort3<T extends Comparable<T>> extends Sort<T> {
 	 */
 	private void insert(int source, int dest) {
 		T v = array[source];
-		for (int i = source; i > dest; i--) {
+		for (int i = source; i > dest; i--) { //腾出目标位置
 			array[i] = array[i - 1];
 		}
-		array[dest] = v;
+		array[dest] = v;//插入
 	}
 	
 	/**
