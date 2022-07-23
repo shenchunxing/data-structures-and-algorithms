@@ -23,12 +23,9 @@ import java.util.Map;
  * 输出：[0,1]
  */
 
-<<<<<<< HEAD:src/_1_两数之和.java
-public class _1_两数之和 {
-=======
+
 public class _1_两数之和_简单_哈希表 {
     //哈希表
->>>>>>> 7eddaf52c603911ad67def017835327ddfb51d34:src/_1_两数之和_简单_哈希表.java
     public static int[] twoSum(int[] nums, int target) {
         if (nums.length == 0 || nums == null) return new int[]{0,0};
         Map<Integer,Integer> map = new HashMap<>();
