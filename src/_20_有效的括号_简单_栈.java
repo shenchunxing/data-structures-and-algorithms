@@ -36,29 +36,6 @@ import java.util.Stack;
 public class _20_有效的括号_简单_栈 {
 
     //原理：遇到了右括号，则必须和栈顶元素匹配，匹配成功后，移除掉，否则就是false
-//    public boolean isValid(String s) {
-//        int n = s.length();
-//        if (n % 2 == 1) return false;
-//        Map<Character , Character> map = new HashMap<>();
-//		map.put(')','(');
-//		map.put(']','[');
-//		map.put('{','}');
-//        Deque<Character> stack = new LinkedList<>();
-//        for (int i = 0 ; i < n ;i++) {
-//            char ch = s.charAt(i);
-//            if (map.containsKey(ch)) { //右括号
-//                //空栈 或者 栈顶元素不匹配该右括号对应的左括号
-//                if (stack.isEmpty() || stack.peek() != map.get(ch)) {
-//                    return false;
-//                }
-//                stack.pop();
-//            } else  { //是左括号，一直入栈
-//                stack.push(ch);
-//            }
-//        }
-//        return stack.isEmpty();
-//    }
-
 	public static void main(String[] args) {
 		_20_有效的括号_简单_栈 o = new _20_有效的括号_简单_栈();
 		System.out.println(o.isValid("(("));

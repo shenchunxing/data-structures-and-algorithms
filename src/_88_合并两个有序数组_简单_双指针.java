@@ -8,10 +8,6 @@ public class _88_合并两个有序数组_简单_双指针 {
 	/**
 	 * 双指针法
 	 * nums1数组更大，nums2合并到nums1，从尾部开始比较
-	 * @param nums1
-	 * @param m
-	 * @param nums2
-	 * @param n
 	 */
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
 		//i1是nums1的最后一个元素下标 ， i2是nums2的最后一个元素下标

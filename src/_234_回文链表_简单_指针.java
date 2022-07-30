@@ -18,6 +18,7 @@ public class _234_回文链表_简单_指针 {
 
 		ListNode lHead = head;
 
+		//一个个比较
 		while (rHead != null)  {
 			if (rHead.val != lHead.val) return false;
 			lHead = lHead.next;
