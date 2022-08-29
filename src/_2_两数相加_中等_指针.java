@@ -11,7 +11,7 @@ public class _2_两数相加_中等_指针 {
 		if (l2 == null) return l1;
 
 		ListNode dummNode = new ListNode(0); //设置头节点，防止链表被释放
-		ListNode last =  dummNode;
+		ListNode last =  dummNode; //尾节点
 
 		int carry = 0;
 		while (l1 != null || l2!= null) {
