@@ -10,6 +10,7 @@ public class _105_从前序与中序遍历序列构造二叉树_中等_找出根
     // 我们可以用一个HashMap把中序遍历数组的每个元素的值和下标存起来，这样寻找根节点的位置就可以直接得到了
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         Map<Integer,Integer> map = new HashMap<>();
+        //存储中序遍历
         for (int i = 0; i < inorder.length; i++) {
             map.put(inorder[i],i);
         }
@@ -17,11 +18,15 @@ public class _105_从前序与中序遍历序列构造二叉树_中等_找出根
     }
 
     private TreeNode dfs(int[] preorder, int p_start , int p_end , int[] inorder, int i_start , int i_end ,Map<Integer,Integer> map) {
+        //前序遍历结束，退出递归
         if (p_start == p_end) return null;
-        int root_val = preorder[p_start]; // 前序遍历的第一个值就是根节点的值
-        TreeNode root = new TreeNode(root_val);//创建根节点
-        //在中序遍历中找到根节点的值
+        // 前序遍历的第一个值就是根节点的值
+        int root_val = preorder[p_start];
+        //创建根节点
+        TreeNode root = new TreeNode(root_val);
+        //在中序遍历中找到根节点的下标
         int i_root_index = map.get(root_val);
+        //计算左节点数量
         int leftNum = i_root_index - i_start;  //左子树的节点数量
         //递归构建左子树:
         //前序：[p_start + 1,p_start + leftNum + 1)

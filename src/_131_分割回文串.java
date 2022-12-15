@@ -29,11 +29,12 @@ public class _131_分割回文串 {
      * @param res   记录所有的结果
      */
     private void backtracking(String s, int start, int len, Deque<String> path, List<List<String>> res) {
-        if (start == len) {
+        if (start == len) {//递归出口
             res.add(new ArrayList<>(path));
             return;
         }
 
+        //遍历以start为起始位置，长度为len的子串
         for (int i = start; i < len; i++) {
 
             // 因为截取字符串是消耗性能的，因此，采用传子串索引的方式判断一个子串是否是回文子串
@@ -42,9 +43,9 @@ public class _131_分割回文串 {
                 continue;
             }
 
-            path.addLast(s.substring(start, i + 1));
-            backtracking(s, i + 1, len, path, res);
-            path.removeLast();
+            path.addLast(s.substring(start, i + 1));//添加回文子串
+            backtracking(s, i + 1, len, path, res);//进入下一个字符
+            path.removeLast();//回溯
         }
     }
 

@@ -18,6 +18,7 @@ public class _130_被围绕的区域_中等_dfs {
             dfs(board,row - 1,i);
         }
 
+        //根据O是否被访问过，填充'X'
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (board[i][j] == 'A' ) {//如果被访问过，说明不是被包围的，还原成'O'
@@ -30,10 +31,12 @@ public class _130_被围绕的区域_中等_dfs {
     }
 
     private void dfs(char[][] board, int row, int col) {
+        //边界过滤
         if (row <0 || row >= board.length) return;
         if (col <0 || col >= board[0].length) return;
+        //不是O的也没必须要访问
         if (board[row][col] != 'O') return;
-        board[row][col] = 'A'; //被访问了
+        board[row][col] = 'A'; //O被访问了，替换成'A'，标记下
         dfs(board,row,col + 1);
         dfs(board,row,col - 1);
         dfs(board,row + 1,col);

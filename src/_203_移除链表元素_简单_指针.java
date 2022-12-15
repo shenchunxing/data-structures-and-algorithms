@@ -5,6 +5,22 @@
  *
  */
 public class _203_移除链表元素_简单_指针 {
+
+	//虚拟头节点
+	public ListNode removeElements2(ListNode head, int val) {
+		ListNode newHead = new ListNode(-1);
+		ListNode newTail  = newHead;//尾节点
+		while (head != null) {
+			if (head.val != val) {
+				newTail.next = head; //关联起来
+				newTail = head;//重新设置尾节点
+			}
+			head = head.next;
+		}
+		newTail.next = null; //最后设置空
+		return newHead.next;
+	}
+
 	//构建一条全新的链表
 	public ListNode removeElements1(ListNode head, int val) {
 		if (head == null) return null;
@@ -35,28 +51,7 @@ public class _203_移除链表元素_简单_指针 {
 		}
 		return newHead;
 	}
-	
-	/**
-	 * 虚拟头节点，简化null判断
-	 * @param head
-	 * @param val
-	 * @return
-	 */
-	public ListNode removeElements2(ListNode head, int val) {
-		ListNode newHead = new ListNode(-1);
-		ListNode newTail  = newHead;//尾节点
-		while (head != null) {
-			if (head.val != val) {
-				newTail.next = head; //关联起来
-				newTail = head;//重新设置尾节点
-			}
-			head = head.next;
-		}
-		newTail.next = null; //最后设置空
-		return newHead.next;
-	}
-	
-	
+
 	private ListNode ListNode(int i) {
 		// TODO Auto-generated method stub
 		return null;

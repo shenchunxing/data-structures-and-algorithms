@@ -3,6 +3,22 @@
  */
 public class _50_Pow_中等_二进制考虑负数 {
 
+    public static void main(String[] args) {
+        System.out.println(myPow2(2,2));
+        System.out.println(myPow2(3,3));
+    }
+
+    // T(n) = T(n/2) + O(1) = O(logn)
+    //递归+分治思想
+   static public double myPow2(double x, int n) {
+        if (n == 0) return 1;
+        if (n == -1) return 1 / x;
+        double half = myPow2(x, n >> 1);
+        half *= half;
+        // 是否为奇数，奇数需要额外乘以x
+        return ((n & 1) == 1) ? (half * x) : half;
+    }
+
     //x^5 = x^101 = (4*x^1) * (2*x^0) * (1*x^1)
     //O(logn)
     public static double myPow(double x, int n) {
@@ -23,19 +39,6 @@ public class _50_Pow_中等_二进制考虑负数 {
         }
         return res;
     }
-
-    // T(n) = T(n/2) + O(1) = O(logn)
-    //递归+分治思想
-    public double myPow2(double x, int n) {
-        if (n == 0) return 1;
-        if (n == -1) return 1 / x;
-        double half = myPow2(x, n >> 1);
-        half *= half;
-        // 是否为奇数，奇数需要额外乘以x
-        return ((n & 1) == 1) ? (half * x) : half;
-    }
-
-
 
     public static int powMod1(int x, int y, int z) {
         if (y < 0 || z == 0) return 0;
@@ -66,10 +69,5 @@ public class _50_Pow_中等_二进制考虑负数 {
         } else { // 奇数
             return (half * (x % z)) % z;
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println(powMod1(-123, 455, 789));
-        System.out.println(powMod(-123, 455, 789));
     }
 }

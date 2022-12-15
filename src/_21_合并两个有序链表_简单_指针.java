@@ -17,9 +17,9 @@ public class _21_合并两个有序链表_简单_指针 {
 				pre.next = l1;
 				l1 = l1.next;
 			}
-			pre = pre.next; //每次循环，指针移动一次
+			pre = pre.next; //更新指针位置
 		}
-		pre.next = l1 == null ? l2 : l1;
+		pre.next = l1 == null ? l2 : l1;//最后剩下的一个节点，拼接到尾部
 		return newHead.next;
     }
 }

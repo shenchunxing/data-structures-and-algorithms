@@ -23,7 +23,11 @@
  *
  */
 public class _121_买卖股票的最佳时机_简单_一次遍历记录最小价格 {
-    public int maxProfit(int[] prices) {
+	public static void main(String[] args) {
+		System.out.println(maxProfit(new int[] {7,1,5,3,6,4}));
+	}
+
+   static public int maxProfit(int[] prices) {
     	if (prices == null || prices.length == 0) return 0;
 		int maxProfit = 0; //最大利润
 		int minPrice = prices[0]; //最小价格

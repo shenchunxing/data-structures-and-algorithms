@@ -20,8 +20,10 @@ public class _200_岛屿数量_中等_dfs {
     }
 
     private void dfs(char[][] grid , int row , int col) {
+        //边界过滤
         if (row < 0 || row >= grid.length) return;
         if (col < 0 || col >= grid[0].length) return;
+        //去重
         if (grid[row][col] == '0') return;
 
         grid[row][col] = '0';//访问过了

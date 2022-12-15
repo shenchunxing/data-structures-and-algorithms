@@ -5,7 +5,11 @@ import java.util.List;
  * https://leetcode-cn.com/problems/spiral-matrix/
  */
 public class _54_螺旋矩阵_中等_扫描rightbottomlefttop方向判断奇偶 {
-    public List<Integer> spiralOrder(int[][] matrix) {
+    public static void main(String[] args) {
+//        System.out.println(spiralOrder(new int[][] {{1,2,3},{4,5,6},{7,8,9}}));
+        System.out.println(spiralOrder(new int[][] {{1,2,3,4},{5,6,7,8},{9,10,11,12}}));
+    }
+    static public List<Integer> spiralOrder(int[][] matrix) {
         if (matrix == null) return null;
         List<Integer> res = new ArrayList<>();
         if (matrix.length == 0) return res;

@@ -12,11 +12,11 @@ public class _17_电话号码的字母组合2_中等_dfs {
     };
 
     public List<String> letterCombinations(String digits) {
-        List<String> list = new LinkedList<>();
+        List<String> list = new LinkedList<>();//答案
         if (digits == null) return list;
         char[] chars = digits.toCharArray();
         if (chars.length == 0) return list;
-        char[] string = new char[chars.length];
+        char[] string = new char[chars.length];//存储答案的字符数组，转换成string，添加到list中
         dfs(list,lettersArray,0,chars,string);
         return list;
     }
@@ -28,8 +28,8 @@ public class _17_电话号码的字母组合2_中等_dfs {
         }
         char[] letters = lettersArray[chars[index] - '2']; //这一层的所有可选字母
         for (char c : letters) {
-            string[index] = c;
-            dfs(list,lettersArray,index + 1,chars,string);
+            string[index] = c;//选择一个字符
+            dfs(list,lettersArray,index + 1,chars,string);//进入下一层
         }
     }
 }

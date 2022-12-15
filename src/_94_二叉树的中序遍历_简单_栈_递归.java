@@ -17,7 +17,7 @@ public class _94_二叉树的中序遍历_简单_栈_递归 {
             }
             root = stack.pop();//出栈一个左
             ans.add(root.val);
-            root = root.right;//最后尝试入栈右节点，右节点可能为空。
+            root = root.right;//右节点入栈，右节点如果不存在，则跳过内侧while，继续pop左节点
         }
         return ans;
     }

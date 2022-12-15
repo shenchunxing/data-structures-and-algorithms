@@ -10,7 +10,7 @@ public class _169_多数元素_简单_摩尔投票法 {
 		//摩尔投票法，遇到相同的数，就投一票，遇到不同的数，就减一票，最后还存在票的数就是众数
 		int count = 0, result = -1;
 		for (int num : nums) {
-			if (count == 0) { //如果count = 0了，说明不是众数，需要重新设置众数
+			if (count == 0) { //如果count = 0了，票被抵消光了，重新设置众当前num为众数
 				result = num;
 			}
 			if (num == result) {

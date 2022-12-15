@@ -7,7 +7,10 @@ public class _69_x的平方根_简单_二分搜索逐渐逼近 {
     /**
      * 二分搜索：x的平方根的整数部分满足：K^2 <=x 的最大值
      */
-    public int mySqrt(int x) {
+    public static void main(String[] args) {
+        System.out.println(mySqrt(6));
+    }
+   static public int mySqrt(int x) {
         int left = 0 , right = x , ans = -1;
         while (left <= right) {
             int mid = (right + left) / 2;
