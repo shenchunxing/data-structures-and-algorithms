@@ -6,10 +6,14 @@
  */
 public class _5_最长回文子串 {
 
+	public static void main(String[] args) {
+		 System.out.println(longestPalindrome("abcba"));
+	}
+
 	/**
 	 * 动态规划
 	 */
-	public String longestPalindrome(String s) {
+	public static String longestPalindrome(String s) {
 		if (s == null) return null;
 		char[] cs = s.toCharArray();
 		if (cs.length <= 1) return s;
@@ -86,10 +90,6 @@ public class _5_最长回文子串 {
 		}
 		int begin = (idx - maxLen) >> 1;
 		return new String(oldCs, begin, maxLen);
-	}
-
-	public static void main(String[] args) {
-		// System.out.println(longestPalindromeManacher("abba"));
 	}
 	
 	/**

@@ -10,18 +10,18 @@ import java.util.Map;
 public class _3_无重复字符的最长子串_中等_滑动窗口 {
 	public static void main(String[] args) {
 //		System.out.println(lengthOfLongestSubstring(new String("abcabccd")));
-//		System.out.println(lengthOfLongestSubstring(new String("abcbc")));
-		System.out.println(lengthOfLongestSubstring(new String("abbbbcd")));
+		System.out.println(lengthOfLongestSubstring(new String("abcbc")));
+//		System.out.println(lengthOfLongestSubstring(new String("abbbbcd")));
 	}
 
-	//滑动窗口：维护一个不重复元素的队列，一旦出现重复，移除最左边的元素
+	//滑动窗口：维护一个不重复元素的队列，一旦出现重复，移除左边元素至重复元素的下一位
 	static public int lengthOfLongestSubstring(String s) {
 		if (s.length() == 0) return 0;
 		Map<Character,Integer> map = new HashMap<>();
 		int max = 0 , left = 0;
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			if (map.containsKey(c)) { //重复了，更新最左侧不重复的坐标位置
+			if (map.containsKey(c)) { //重复了，更新最左侧不重复的坐标位置，此处为了让队列是不重复的，从重复位置的下一个取值，作为左边界
 				left = Math.max(left,map.get(c) + 1);
 			}
 			map.put(c,i);
