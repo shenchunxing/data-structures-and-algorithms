@@ -6,8 +6,11 @@ import java.util.List;
  * https://leetcode-cn.com/problems/3sum/
  */
 public class _15_三数之和_中等_排序双指针 {
+    public static void main(String[] args) {
+        System.out.println(threeSum(new int[] {-1,-1,0,1,1,2,-1,-4}));
+    }
     //排序+ 双指针: 时间复杂度O(N^2),空间复杂度O(logN)
-    public List<List<Integer>> threeSum(int[] nums) {
+   static public List<List<Integer>> threeSum(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res = new ArrayList<>();
         for (int k = 0; k < nums.length - 2; k++) {

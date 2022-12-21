@@ -26,12 +26,11 @@ public class _138_复制带随机指针的链表_中等_递归 {
 		}
 	}
 
-	//当前节点完成创建后，去创建next和random节点，返回节点，这样就完成了一次键盘的拷贝操作。
-	// 因为里面已经使用了next，会自动递归调用，因此不需要while遍历
+	//当前节点完成创建后，去创建next和random节点，返回节点，这样就完成了一次链表的拷贝操作。
 	public Node copyRandomList(Node head) {
 		if (head == null) return null;
 		if (cachedNodeMap.containsKey(head)) return cachedNodeMap.get(head); //节点已经存在，防止重复拷贝
-		Node node = new Node(head.val); //节点不存在，需要新建
+		Node node = new Node(head.val); //拷贝根节点
 		cachedNodeMap.put(head, node);//缓存
 		node.next = copyRandomList(head.next); //拷贝next节点
 		node.random = copyRandomList(head.random); //拷贝random节点

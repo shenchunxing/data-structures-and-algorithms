@@ -13,7 +13,7 @@ public class _98_验证二叉搜索树_中等_栈 {
     public boolean isValidBST(TreeNode root) {
         if (root == null) return true;
         Stack<TreeNode> stack = new Stack<>();
-        double inorder = -Double.MAX_VALUE;
+        double inorder = -Double.MAX_VALUE;//默认最小值
         while (!stack.isEmpty() || root != null) {
             while (root != null) {
                 stack.push(root);

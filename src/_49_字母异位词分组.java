@@ -19,14 +19,14 @@ public class _49_字母异位词分组 {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
         for (String s : strs) {
-            char[] array = s.toCharArray();
+            char[] array = s.toCharArray();//转成字符数组
             Arrays.sort(array); //排序
-            String key = new String(array);
+            String key = new String(array);//排序后的字符数组作为key
             List<String> list = map.getOrDefault(key,new ArrayList<>());
-            list.add(s);
-            map.put(key,list);//list已经存在，则覆盖，否则新建
+            list.add(s);//相同的字母异位词会添加到同一个list中
+            map.put(key,list);//不断把相同的key的字符串加到同一个list中。并保存到map
         }
-        return new ArrayList<>(map.values());
+        return new ArrayList<>(map.values());//取出map.values就行
     }
 
     /**

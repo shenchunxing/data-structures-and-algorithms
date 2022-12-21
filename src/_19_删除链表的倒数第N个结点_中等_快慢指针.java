@@ -9,10 +9,10 @@ public class _19_删除链表的倒数第N个结点_中等_快慢指针 {
        dummy.next = head;
        ListNode fast = dummy;
        ListNode slow = dummy;
-        for (int i = 0; i <= n; i++) {
+        for (int i = 0; i <= n; i++) { //快指针先走到第n个节点处
             fast = fast.next;
         }
-        while (fast != null) {
+        while (fast != null) {//快指针走完剩下的链表长度,慢指针所处的位置就是需要删除的节点位置，删除
             fast = fast.next;
             slow = slow.next;
         }

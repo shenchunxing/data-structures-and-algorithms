@@ -13,7 +13,7 @@ public class _160_相交链表_简单_指针或哈希表 {
 		if (headA == null || headB == null) return null;
 		ListNode curA = headA, curB = headB;
 		while (curA != curB) { //如果节点相同，说明相交了，直接返回相交节点
-			//curA已经走完，拼接到headB
+			//curA已经走完?，拼接到headB,否则走一步
 			curA = (curA == null) ? headB : curA.next;
 			//curB已经走完，拼接到headA,
 			curB = (curB == null) ? headA : curB.next;

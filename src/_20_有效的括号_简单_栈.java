@@ -43,7 +43,7 @@ public class _20_有效的括号_简单_栈 {
 
 	 public boolean isValid(String s) {
 		 if (s == null || s.length() ==0 ) return false;
-		 if (s.length() % 2 != 0) return false;
+		 if (s.length() % 2 != 0) return false;//奇数肯定不是有效的
 		 Map<Character, Character> map = new HashMap<>();
 		 map.put('}', '{');
 		 map.put(')', '(');
@@ -51,10 +51,10 @@ public class _20_有效的括号_简单_栈 {
 		 Stack<Character> stack = new Stack<>();
 		 for (int i = 0; i < s.length(); i++) {
 			 char c = s.charAt(i);
-			 if (map.containsKey(c)) { //右括号
-				 if (stack.isEmpty() || map.get(c) != stack.peek())  return false;
+			 if (map.containsKey(c)) { //取出任意一个右括号
+				 if (stack.isEmpty() || map.get(c) != stack.peek())  return false; //栈为空或栈顶元素不是对应的左括号，不是有效的
 				 stack.pop(); //出栈
-			 } else { //左括号
+			 } else { //左括号入栈
 				 stack.push(c);
 			 }
 		 }

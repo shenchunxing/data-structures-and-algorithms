@@ -1,7 +1,14 @@
-
+/**
+ * https://leetcode.cn/problems/search-in-rotated-sorted-array/
+ */
 public class _33_搜索旋转排序数组_中等_局部二分搜索 {
-	public int search(int[] nums, int target) {
 
+	public static void main(String[] args) {
+		System.out.println(search(new int[] {4,5,6,7,1,2,3},6));
+		System.out.println(search(new int[] {7,8,1,2,3,4,5,6},7));
+	}
+
+	static public int search(int[] nums, int target) {
 		//二分搜索
 		int n = nums.length;
 		if (n == 0) return -1;
@@ -15,10 +22,9 @@ public class _33_搜索旋转排序数组_中等_局部二分搜索 {
 			}
 			//旋转点在右半区，则左半区是排序数组，可以二分搜索
 			 if (nums[0] <= nums[mid]) {
-				 //在左半区
 				 if (nums[0] <= target && target <= nums[mid]) {
 					r = mid - 1; 
-				 } else {  //在右半区
+				 } else {
 					l = mid + 1;
 				 }
 			 } else { //旋转点在左半区，则右半区是排序数组，可以二分搜索

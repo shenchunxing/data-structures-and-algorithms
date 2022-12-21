@@ -2,10 +2,13 @@
  * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
  */
 public class _122_买卖股票的最佳时机II_中等_动态规划 {
+    public static void main(String[] args) {
+        System.out.println(maxProfit(new int[] {7,1,5,3,6,4}));
+    }
     /**
      * 贪心：没有交易次数限制，每次涨的前一天买入，下一天卖出，每次都有获利
      */
-    public int maxProfit(int[] prices) {
+   static public int maxProfit(int[] prices) {
          int n = prices.length;
          int ans = 0;
         for (int i = 1; i < n; i++) {
@@ -18,9 +21,24 @@ public class _122_买卖股票的最佳时机II_中等_动态规划 {
     }
 
     /**
+     * 每一天的状态只和前一天有关，优化成一维数组
+     */
+    static public int maxProfit3(int[] prices) {
+        int n = prices.length;
+        //dp0:第i天没有持有股票的最大利润
+        //dp1:第i天持有股票的最大利润
+        int dp0 = 0, dp1 = -prices[0];
+        for (int i = 1; i < n; i++) {
+            dp0 = Math.max(dp0,dp1 + prices[i]);//需要不持有股票，dp1是持有股票的，需要卖出股票获取利润 + price[i]
+            dp1 = Math.max(dp1,dp0 - prices[i]);//需要持有股票，dp0是没有持有的，需要买进股票- price[i]
+        }
+        return dp0;
+    }
+
+    /**
      * 动态规划：dp[i][0]表示第i天交易完没有股票的最大利润，dp[i][1]表示第i天交易完持有股票的最大利润，
      */
-    public int maxProfit2(int[] prices) {
+    static public int maxProfit2(int[] prices) {
         int n = prices.length;
         int[][] dp = new int[n][2];
         dp[0][0] = 0; //没有持有股票，利润为0，
@@ -34,18 +52,4 @@ public class _122_买卖股票的最佳时机II_中等_动态规划 {
         return dp[n - 1][0];
     }
 
-    /**
-     * 每一天的状态只和前一天有关，优化成一维数组
-     */
-    public int maxProfit3(int[] prices) {
-        int n = prices.length;
-        //dp0:第i天没有持有股票的最大利润
-        //dp1:第i天持有股票的最大利润
-        int dp0 = 0, dp1 = -prices[0];
-        for (int i = 1; i < n; i++) {
-            dp0 = Math.max(dp0,dp1 + prices[i]);//需要不持有股票，dp1是持有股票的，需要卖出股票获取利润 + price[i]
-            dp1 = Math.max(dp1,dp0 - prices[i]);//需要持有股票，dp0是没有持有的，需要买进股票- price[i]
-        }
-        return dp0;
-    }
 }

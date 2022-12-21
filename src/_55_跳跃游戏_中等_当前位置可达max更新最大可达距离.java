@@ -9,7 +9,13 @@ public class _55_跳跃游戏_中等_当前位置可达max更新最大可达距�
      * 一开始更新位置在0，跳跃长度2，更新rightmost = 2
      *
      */
-    public boolean canJump(int[] nums) {
+
+    public static void main(String[] args) {
+        System.out.println(canJump(new int[] {2,3,1,1,4}));
+        System.out.println(canJump(new int[] {3,2,1,0,4}));
+    }
+
+   static public boolean canJump(int[] nums) {
         int n = nums.length;
         int rightmost = 0;//最远可达位置
         for (int i = 0; i < n; i++) {

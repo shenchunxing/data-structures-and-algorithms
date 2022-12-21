@@ -14,16 +14,17 @@ public class _103_二叉树的锯齿形层序遍历_中等_层序遍历 {
 
         Queue<TreeNode> nodeQueue = new ArrayDeque<TreeNode>();
         nodeQueue.offer(root);
-        boolean isOrderLeft = true;
+        boolean isOrderLeft = true;//默认从右往左，控制入队方向
 
         while (!nodeQueue.isEmpty()) {
+            //双端队列
             Deque<Integer> levelList = new LinkedList<Integer>();
             int size = nodeQueue.size();
             for (int i = 0; i < size; ++i) {
                 TreeNode curNode = nodeQueue.poll();
-                if (isOrderLeft) {
+                if (isOrderLeft) { //从尾部入队
                     levelList.offerLast(curNode.val);
-                } else {
+                } else {//从头部入队
                     levelList.offerFirst(curNode.val);
                 }
                 if (curNode.left != null) {
@@ -34,6 +35,7 @@ public class _103_二叉树的锯齿形层序遍历_中等_层序遍历 {
                 }
             }
             ans.add(new LinkedList<Integer>(levelList));
+            //每一层遍历结束，转换遍历方向
             isOrderLeft = !isOrderLeft;
         }
 

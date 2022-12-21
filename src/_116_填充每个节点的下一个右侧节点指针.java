@@ -3,6 +3,29 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class _116_填充每个节点的下一个右侧节点指针 {
+    //层序遍历 O(n) O(n)
+    public Node connect2(Node root) {
+        if (root == null) return root;
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Node node = queue.poll();
+                if (i < size - 1) { //被削掉的元素的next指向栈顶元素
+                    node.next = queue.peek();
+                }
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+            }
+        }
+        return root;
+    }
+
     //O(n) O(1)
 
     /**
@@ -27,29 +50,6 @@ public class _116_填充每个节点的下一个右侧节点指针 {
             }
             // 去下一层的最左的节点
             leftmost = leftmost.left;
-        }
-        return root;
-    }
-
-    //层序遍历 O(n) O(n)
-    public Node connect2(Node root) {
-        if (root == null) return root;
-        Queue<Node> queue = new LinkedList<>();
-        queue.add(root);
-        while (!queue.isEmpty()) {
-            int size = queue.size();
-            for (int i = 0; i < size; i++) {
-                Node node = queue.poll();
-                if (i < size - 1) {
-                    node.next = queue.peek();
-                }
-                if (node.left != null) {
-                    queue.add(node.left);
-                }
-                if (node.right != null) {
-                    queue.add(node.right);
-                }
-            }
         }
         return root;
     }

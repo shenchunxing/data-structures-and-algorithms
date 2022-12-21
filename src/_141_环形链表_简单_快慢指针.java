@@ -9,7 +9,7 @@ public class _141_环形链表_简单_快慢指针 {
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
-            if (slow == fast) return true; //相遇了，有环
+            if (slow == fast) return true; //有环的话肯定会在某一处相遇
         }
         return false;
     }

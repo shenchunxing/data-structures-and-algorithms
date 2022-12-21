@@ -2,7 +2,7 @@
  * https://leetcode.cn/problems/happy-number/
  */
 public class _202_快乐数_简单_快慢指针 {
-    //查找是否有环
+    //检测链表是否有环
     public boolean isHappy(int n) {
         int slow = n;//慢指针，每次走1步
         int fast  = getNext(n); //快指针，每次走2步

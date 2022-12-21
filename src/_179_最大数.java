@@ -14,6 +14,7 @@ public class _179_最大数 {
         Arrays.sort(strings,new LargerNumberComparator());
         if (strings[0].equals("0")) return "0";
 
+        //拼接
         String largestNumberStr = new String();
         for (String numStr : strings) {
             largestNumberStr += numStr;
@@ -21,6 +22,7 @@ public class _179_最大数 {
         return largestNumberStr;
     }
 
+    //比较器
     private class LargerNumberComparator implements Comparator<String> {
         @Override
         public int compare(String o1, String o2) {

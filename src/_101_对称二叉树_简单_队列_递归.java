@@ -17,7 +17,7 @@ public class _101_对称二叉树_简单_队列_递归 {
     private boolean isSymmetric(TreeNode p , TreeNode q) {
         if (q == null && p == null) return true;
         if (q == null || p == null) return false;
-        return p.val == q.val && isSymmetric(p.left,q.left) && isSymmetric(p.right,q.right);
+        return p.val == q.val && isSymmetric(p.left,q.right) && isSymmetric(p.right,q.left);
     }
 
     /**
