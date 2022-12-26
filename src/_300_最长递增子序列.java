@@ -3,7 +3,7 @@
  */
 public class _300_最长递增子序列 {
     public static void main(String[] args) {
-        System.out.println(lengthOfLIS(new int[] {10,2,2,5,1,7,101,18}));
+        System.out.println(lengthOfLIS(new int[] {10,9,2,5,3,7,101,18}));//{2,3,7,101}
     }
     static public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) return 0;

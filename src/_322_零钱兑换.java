@@ -5,22 +5,12 @@ public class _322_零钱兑换 {
 
     public static void main(String[] args) {
         System.out.println(coins5(41, new int[] {1, 5, 25, 20}));
-        // fib(40)
-
-        // dp(i) 第i项斐波那契数
-        // dp(i) = dp(i - 1) + dp(i - 2)
-
-        // dp(41) = 凑够41需要的最少硬币数量 = min { dp(40), dp(36), dp(16), dp(21) } + 1
-        // dp(41 - 1) = dp(40) = 凑够40需要的最少硬币数量
-        // dp(41 - 5) = dp(36) = 凑够36需要的最少硬币数量
-        // dp(41 - 25) = dp(16) = 凑够16需要的最少硬币数量
-        // dp(41 - 20) = dp(21) = 凑够21需要的最少硬币数量
-        // min { dp(40), dp(36), dp(16), dp(21) } + 1
     }
 
     static int coins5(int n, int[] faces) {
         if (n < 1 || faces == null || faces.length == 0) return 0;
         int[] dp = new int[n + 1];
+        //每一轮可以得到满足最大值是i的情况下，最小的硬币个数。
         for (int i = 1; i <= n; i++) {
             int min = Integer.MAX_VALUE;
             for (int face : faces) { //选了face面值的硬币
@@ -31,7 +21,7 @@ public class _322_零钱兑换 {
             }
             if (min == Integer.MAX_VALUE) { //没有选择过硬币
                 dp[i] = -1;
-            } else { //选择了硬币，每次循环返回记录凑够i，需要的最少硬币个数
+            } else { //选择了硬币
                 dp[i] = min + 1;
             }
         }
@@ -115,16 +105,5 @@ public class _322_零钱兑换 {
             dp[n] = Math.min(min1, min2) + 1;
         }
         return dp[n];
-    }
-
-    /**
-     * 暴力递归（自顶向下的调用，出现了重叠子问题）
-     */
-    static int coins1(int n) {
-        if (n < 1) return Integer.MAX_VALUE;
-        if (n == 25 || n == 20 || n == 5 || n == 1) return 1;//递归基：如果刚好是其中一种硬币，退出递归
-        int min1 = Math.min(coins1(n - 25), coins1(n - 20));
-        int min2 = Math.min(coins1(n - 5), coins1(n - 1));
-        return Math.min(min1, min2) + 1;//比较第一次选中的是25/20/5/1的硬币后，最少的硬币个数。+1指的是第一次选中的硬币
     }
 }

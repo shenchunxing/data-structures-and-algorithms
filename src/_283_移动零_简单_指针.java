@@ -21,25 +21,12 @@ public class _283_移动零_简单_指针 {
             k++;
         }
     }
-
-    //填充：遇到0直接跳过，遇到非0，将当前的num[cur] = num[i], num[i] = 0，cur指的是非0的下标
-    public void moveZeroes(int[] nums) {
-        if (nums == null) return;
-        for (int i = 0, cur = 0; i < nums.length; i++) {
-            if (nums[i] == 0) continue;
-            if (cur != i) {
-                nums[cur] = nums[i]; //将i的值赋值给cur，同时i的值变成0
-                nums[i] = 0;
-            }
-            cur++;
-        }
-    }
     
-   //双指针：left指向第一个0的位置，right指向第一个非0的位置
+   //双指针
     public void moveZeroes2(int[] nums) {
     	if (nums == null) return;
-    	int left = 0;
-    	int right = 0;
+    	int left = 0;//表示可以交换的0的位置
+    	int right = 0;//非0位置
     	for (int i = 0; i < nums.length; i++) {
 			if (nums[i] != 0) {
 				swapNums(left , right,nums);
@@ -54,4 +41,18 @@ public class _283_移动零_简单_指针 {
 		nums[left] = nums[right];
 		nums[right] = temp;
 	}
+
+
+    //填充：遇到0直接跳过，遇到非0，将当前的num[cur] = num[i], num[i] = 0，cur指的是非0的下标
+    public void moveZeroes(int[] nums) {
+        if (nums == null) return;
+        for (int i = 0, cur = 0; i < nums.length; i++) {
+            if (nums[i] == 0) continue;
+            if (cur != i) {
+                nums[cur] = nums[i]; //将i的值赋值给cur，同时i的值变成0
+                nums[i] = 0;
+            }
+            cur++;
+        }
+    }
 }
