@@ -5,15 +5,14 @@
  */
 public class _581_最短无序连续子数组 {
     public static void main(String[] args) {
-        _581_最短无序连续子数组 ob = new _581_最短无序连续子数组();
-        System.out.println(ob.findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15}));
-        System.out.println(ob.findUnsortedSubarray(new int[]{1, 2, 3, 8, 7, 9, 15}));
+        System.out.println(findUnsortedSubarray(new int[]{2, 6, 4, 8, 10, 9, 15}));
+        System.out.println(findUnsortedSubarray(new int[]{1, 2, 3, 8, 7, 9, 15}));
     }
 
     /**
      * 双指针一次遍历
      */
-    public int findUnsortedSubarray(int[] nums) {
+   static public int findUnsortedSubarray(int[] nums) {
         if (nums.length == 0) return 0;
         int n = nums.length;
         int max = Integer.MIN_VALUE, r = -1; //r指向右侧边界

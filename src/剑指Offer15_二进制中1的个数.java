@@ -3,8 +3,11 @@
  */
 public class 剑指Offer15_二进制中1的个数 {
 
+    public static void main(String[] args) {
+        System.out.println(hammingWeight(10));
+    }
     //O(log2n) O(1)
-    public int hammingWeight(int n) {
+    static public int hammingWeight(int n) {
         int ans = 0;
         while (n != 0) {
             ans += n & 1;

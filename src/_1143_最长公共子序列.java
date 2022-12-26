@@ -12,6 +12,31 @@ public class _1143_最长公共子序列 {
         System.out.println(len);
     }
 
+    //因为dp只和lefttop，top ,left 有关，只涉及到当前行和上一行，可以继续优化，变成一维数组,数组长度较短的作为dp
+    static public int lcs(int[] nums1 , int[] nums2) {
+        if (nums1 == null || nums1.length == 0) return 0;
+        if (nums2 == null || nums2.length == 0) return 0;
+        int[] rows = nums1 ,  cols = nums2;
+        if (nums1.length < nums2.length) {
+            cols = nums1;
+            rows = nums2;
+        }
+        int[] dp = new int[cols.length + 1];
+        for (int i = 1; i <= rows.length; i++) {
+            int cur = 0;
+            for (int j = 1; j <= cols.length; j++) {
+                int leftTop = cur; //获取上一行的dp[j]
+                cur = dp[j]; //存起来当前的dp[j]
+                if (nums1[i - 1] == nums2[j - 1]) { //最后一个元素是相等的，则是dp[i - 1][j - 1] + 1
+                    dp[j] = leftTop + 1;
+                } else { //最后一个元素不相等，但是可能和前面的元素相等，两种情况都要考虑
+                    dp[j] = Math.max(dp[j] , dp[j - 1]);
+                }
+            }
+        }
+        return dp[cols.length];
+    }
+
     //动态规划
     static public int longestCommonSubsequence(String text1, String text2) {
         if (text1 == null || text2 == null) return 0;
@@ -58,31 +83,6 @@ public class _1143_最长公共子序列 {
             }
         }
         return dp[nums2.length];
-    }
-
-    //因为dp只和lefttop，top ,left 有关，只涉及到当前行和上一行，可以继续优化，变成一维数组,数组长度较短的作为dp
-    static public int lcs(int[] nums1 , int[] nums2) {
-        if (nums1 == null || nums1.length == 0) return 0;
-        if (nums2 == null || nums2.length == 0) return 0;
-        int[] rows = nums1 ,  cols = nums2;
-        if (nums1.length < nums2.length) {
-            cols = nums1;
-            rows = nums2;
-        }
-        int[] dp = new int[cols.length + 1];
-        for (int i = 1; i <= rows.length; i++) {
-            int cur = 0;
-            for (int j = 1; j <= cols.length; j++) {
-                int leftTop = cur; //获取上一行的dp[j]
-                cur = dp[j]; //存起来当前的dp[j]
-                if (nums1[i - 1] == nums2[j - 1]) { //最后一个元素是相等的，则是dp[i - 1][j - 1] + 1
-                    dp[j] = leftTop + 1;
-                } else { //最后一个元素不相等，但是可能和前面的元素相等，两种情况都要考虑
-                    dp[j] = Math.max(dp[j] , dp[j - 1]);
-                }
-            }
-        }
-        return dp[cols.length];
     }
 
     //因为dp只和lefttop，top ,left 有关，只涉及到当前行和上一行，因此可以用滚动数组继续优化

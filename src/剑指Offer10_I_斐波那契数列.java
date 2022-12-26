@@ -2,38 +2,10 @@
  * https://leetcode.cn/problems/fei-bo-na-qi-shu-lie-lcof/
  */
 public class 剑指Offer10_I_斐波那契数列 {
-
-    //递归
-    public int fib0(int n) {
-        if (n <= 2) return 1;
-        return fib0(n - 1) + fib0(n - 2);
+    public static void main(String[] args) {
+        System.out.println(fib4(6));
     }
 
-    //优化后的递归，去除了重复计算
-    public int fib1(int n) {
-        if (n <= 2) return 1;
-        int[] array = new int[n + 1];
-        array[1] = array[2] = 1;
-        return fib1(n, array);
-    }
-
-    public int fib1(int n, int[] array) {
-        if (array[n] == 0) {
-            array[n] = fib1(n - 1, array) + fib1(n - 2, array);
-        }
-        return array[n];
-    }
-
-    //迭代，O(n),O(n)
-    public int fib2(int n) {
-        if (n <= 2) return 1;
-        int[] array = new int[n + 1];
-        array[1] = array[2] = 1;
-        for (int i = 3; i <= n; i++) {
-            array[i] = array[i - 1] + array[i - 2];
-        }
-        return array[n];
-    }
 
     //滚动数组，优化迭代,空间复杂度降为O(1)
     public int fib3(int n) {
@@ -65,7 +37,7 @@ public class 剑指Offer10_I_斐波那契数列 {
         return array[n & 1];
     }
 
-    public int fib4(int n) {
+   static public int fib4(int n) {
         if (n == 0 ) return 0;
         if (n <= 2) return 1;
         int first = 1;
@@ -76,5 +48,37 @@ public class 剑指Offer10_I_斐波那契数列 {
             first = temp;//前一次的和
         }
         return second % 1000000007;
+    }
+
+    //递归
+    public int fib0(int n) {
+        if (n <= 2) return 1;
+        return fib0(n - 1) + fib0(n - 2);
+    }
+
+    //优化后的递归，去除了重复计算
+    public int fib1(int n) {
+        if (n <= 2) return 1;
+        int[] array = new int[n + 1];
+        array[1] = array[2] = 1;
+        return fib1(n, array);
+    }
+
+    public int fib1(int n, int[] array) {
+        if (array[n] == 0) {
+            array[n] = fib1(n - 1, array) + fib1(n - 2, array);
+        }
+        return array[n];
+    }
+
+    //迭代，O(n),O(n)
+    public int fib2(int n) {
+        if (n <= 2) return 1;
+        int[] array = new int[n + 1];
+        array[1] = array[2] = 1;
+        for (int i = 3; i <= n; i++) {
+            array[i] = array[i - 1] + array[i - 2];
+        }
+        return array[n];
     }
 }

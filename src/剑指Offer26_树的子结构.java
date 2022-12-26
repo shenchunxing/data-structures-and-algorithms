@@ -10,7 +10,7 @@ public class 剑指Offer26_树的子结构 {
         return recur(A,B) || isSubStructure(A.left,B) || isSubStructure(A.right,B);
     }
 
-    /*判断以A为根节点的子树是否包含b*/
+    /*判断以A为根节点的子树是否包含B*/
     boolean recur(TreeNode root, TreeNode B) {
         if (B == null) return true;
         if (root == null || root.val != B.val) return false;

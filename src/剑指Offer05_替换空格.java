@@ -2,7 +2,23 @@
  * https://leetcode.cn/problems/ti-huan-kong-ge-lcof/
  */
 public class 剑指Offer05_替换空格 {
-    public String replaceSpace(String s) {
+    public static void main(String[] args) {
+        System.out.println(replaceSpace1("s xx jk"));
+    }
+    static public String replaceSpace1(String s) {
+        StringBuilder builder = new StringBuilder();
+        char[] chars = s.toCharArray();
+        for (Character c : chars) {
+            if (c == ' ') {
+                builder.append("%20");
+            } else {
+                builder.append(c);
+            }
+        }
+        return builder.toString();
+    }
+
+    static public String replaceSpace(String s) {
         int length = s.length();
         char[] array = new char[length * 3]; //直接创建3倍大小，有点浪费内存。
         int size = 0;
@@ -17,18 +33,5 @@ public class 剑指Offer05_替换空格 {
             }
         }
         return new String(array,0,size);
-    }
-
-    public String replaceSpace1(String s) {
-        StringBuilder builder = new StringBuilder();
-        char[] chars = s.toCharArray();
-        for (Character c : chars) {
-            if (c == ' ') {
-                builder.append("%20");
-            } else {
-                builder.append(c);
-            }
-        }
-        return builder.toString();
     }
 }

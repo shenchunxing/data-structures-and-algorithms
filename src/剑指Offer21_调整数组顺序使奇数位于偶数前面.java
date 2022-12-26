@@ -1,9 +1,14 @@
+import java.util.Arrays;
+
 /**
  * https://leetcode.cn/problems/diao-zheng-shu-zu-shun-xu-shi-qi-shu-wei-yu-ou-shu-qian-mian-lcof/
  */
 public class 剑指Offer21_调整数组顺序使奇数位于偶数前面 {
+    public static void main(String[] args) {
+       System.out.println(Arrays.toString(exchange(new int[] {1,2,3,4,5,6})));
+    }
     //首尾双指针
-    public int[] exchange(int[] nums) {
+    static public int[] exchange(int[] nums) {
         int l = 0 , r = nums.length - 1,temp;
         while (l < r) {
             //l从左到右搜索偶数
