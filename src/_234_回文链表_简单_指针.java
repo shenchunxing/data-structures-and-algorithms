@@ -6,14 +6,14 @@
  */
 public class _234_回文链表_简单_指针 {
 	public boolean isPalindrome(ListNode head) {
-		if (head == null || head.next == null) return true;
-		//两个节点
-		if (head.next.next == null) return head.val == head.next.val;
+		if (head == null || head.next == null) return true;//1个节点或者没有节点
+		if (head.next.next == null) return head.val == head.next.val; //两个节点
 
-		//中间节点
+		//快慢指针找到中间节点
 		ListNode mid = middleNode(head);
-		//反转右侧部分
+		//反转右半部分，得到一个新链表
 		ListNode rHead = reverse(mid.next);
+		//保留右链表是为了，后续要反转回来，不改变原来的链表结构
 		ListNode oldRhead = rHead;
 
 		ListNode lHead = head;

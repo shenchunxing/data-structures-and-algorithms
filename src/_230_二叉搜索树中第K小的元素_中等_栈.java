@@ -20,8 +20,8 @@ public class _230_二叉搜索树中第K小的元素_中等_栈 {
                 root = root.left;
             }
             root = stack.pop();
-            k--;
-            if (k == 0) break;
+            k--;//每次得到一个值，k--
+            if (k == 0) break;//k == 0，root就是第k小的值
             root = root.right;
         }
         return root.val;
