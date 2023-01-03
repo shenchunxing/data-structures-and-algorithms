@@ -9,6 +9,7 @@ public class 剑指Offer17_打印从1到最大的n位数 {
     }
 
     static public int[] printNumbers(int n) {
+        //最大的数
         int end = (int)Math.pow(10,n) - 1;
         int[] nums = new int[end];
         for (int i = 0; i < end; i++) {

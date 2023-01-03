@@ -28,7 +28,7 @@ public class _37_解数独_深度优先搜索 {
     }
 
     public void dfs(char[][] board, int pos) {
-        if (pos == spaces.size()) { //边界
+        if (pos == spaces.size()) { //到达了边界
             valid = true;
             return;
         }
