@@ -1,0 +1,33 @@
+package 排序指针;
+
+/**
+ * https://leetcode.cn/problems/count-and-say/
+ */
+public class _38_外观数列 {
+    public static void main(String[] args) {
+        System.out.println(countAndSay(4));//1211
+        System.out.println(countAndSay(6));//312211
+    }
+
+    //本质上只是依次统计字符串中连续相同字符的个数
+    static public String countAndSay(int n) {
+        String str = "1";
+        for (int i = 2; i <= n ; i++) {
+            StringBuilder builder = new StringBuilder();
+            int start = 0 ;//开始位置
+            int position = 0;//当前位置
+            while (position < str.length()) {
+                //统计连续相同的长度
+                while (position < str.length() && str.charAt(start) == str.charAt(position)) {
+                    position++;
+                }
+                //相同字符的长度 + 字符本身
+                builder.append(Integer.toString(position - start)).append(str.charAt(start));
+                //重置位置
+                start = position;
+            }
+            str = builder.toString();
+        }
+        return str;
+    }
+}
