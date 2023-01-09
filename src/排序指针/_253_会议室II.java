@@ -7,8 +7,12 @@ import java.util.PriorityQueue;
  * https://leetcode-cn.com/problems/meeting-rooms-ii/
  */
 public class _253_会议室II {
+    public static void main(String[] args) {
+        System.out.println(minMeetingRooms(new int[][] {{0,30},{5,10},{10,20}}));
+        System.out.println(minMeetingRooms1(new int[][] {{0,30},{5,10},{10,20}}));
+    }
 
-    public int minMeetingRooms(int[][] intervals) {
+    static public int minMeetingRooms(int[][] intervals) {
         if (intervals == null || intervals.length == 0) return 0;
         // 存放所有会议的开始时间
         int[] begins = new int[intervals.length];
@@ -37,10 +41,8 @@ public class _253_会议室II {
 
     /**
      * 优先级队列，构建小顶堆
-     * @param intervals
-     * @return
      */
-    public int minMeetingRooms1(int[][] intervals) {
+    static public int minMeetingRooms1(int[][] intervals) {
         if (intervals == null || intervals.length == 0) return 0;
 
         // 按照会议的开始时间，从小到大排序  nlogn

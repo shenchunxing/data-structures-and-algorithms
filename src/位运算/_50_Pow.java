@@ -8,6 +8,9 @@ public class _50_Pow {
     public static void main(String[] args) {
         System.out.println(myPow2(2,2));
         System.out.println(myPow2(3,3));
+
+        System.out.println(powMod1(123,456,789));
+        System.out.println(powMod2(123,456,789));
     }
 
     // T(n) = T(n/2) + O(1) = O(logn)
@@ -42,10 +45,11 @@ public class _50_Pow {
         return res;
     }
 
+    //求x的y次幂，再模z的值
     public static int powMod1(int x, int y, int z) {
         if (y < 0 || z == 0) return 0;
-        int res = 1 % z;
-        x %= z;
+        int res = 1 % z;//直接取模，简化res = (res * x) % z;
+        x %= z; //直接取模，简化x = (x * x) % z
         while (y > 0) {
             if ((y & 1) == 1) {
                 // 如果最后一个二进制位是1，就累乘上x
@@ -61,10 +65,10 @@ public class _50_Pow {
     // 2^100 % 6  = (2^50 * 2^50) % 6 = ((2^50 % 6) * (2^50 % 6)) % 6
     // 2^101 % 6 = (2^50 * 2^50 * 2) % 6 = ((2^50 % 6) * (2^50 % 6) * (2 % 6)) % 6
     //递归、分治
-    public static int powMod(int x, int y, int z) {
+    public static int powMod2(int x, int y, int z) {
         if (y < 0 || z == 0) return 0;
         if (y == 0) return 1 % z;
-        int half = powMod(x, y >> 1, z);
+        int half = powMod2(x, y >> 1, z);
         half *= half;
         if ((y & 1) == 0) { // 偶数
             return half % z;

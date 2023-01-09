@@ -8,7 +8,12 @@ import java.util.List;
  * https://leetcode-cn.com/problems/permutations-ii/
  */
 public class _47_全排列II {
-    public List<List<Integer>> permuteUnique(int[] nums) {
+    public static void main(String[] args) {
+        System.out.println(permuteUnique(new int[]{1,2,3}));
+        System.out.println(permuteUnique(new int[]{1,1,3}));
+    }
+
+   static public List<List<Integer>> permuteUnique(int[] nums) {
         if (nums == null) return null;
         List<List<Integer>> ans = new ArrayList<>();
         List<Integer> path = new ArrayList<>();
@@ -18,14 +23,14 @@ public class _47_全排列II {
         return ans;
     }
 
-    private void dfs(int[] nums, int idx, List<List<Integer>> ans, List<Integer> path, boolean[] used) {
+   static private void dfs(int[] nums, int idx, List<List<Integer>> ans, List<Integer> path, boolean[] used) {
         if (idx == nums.length) {
             ans.add(new ArrayList<>(path));
             return;
         }
         for (int i = 0; i < nums.length; i++) {
-            //已经被使用过，直接跳过
-            //和上一个重复了，我们规定相同的数以第一次出现的为结果，其他情况都过滤掉，上一次没选，这次直接过滤掉
+            //剪枝：已经使用过的
+            //剪枝：相同的选项这次没选，那上一次也不能选
             if (used[i] || (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])) {
                 continue;
             }
@@ -37,14 +42,5 @@ public class _47_全排列II {
         }
     }
 
-    public static void main(String[] args) {
-        _47_全排列II o = new _47_全排列II();
-        int[] nums = {1, 2, 3};
-        List<List<Integer>> list = o.permuteUnique(nums);
-        System.out.println(list);
 
-        nums = new int[]{1, 1, 3};
-        list = o.permuteUnique(nums);
-        System.out.println(list);
-    }
 }
