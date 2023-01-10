@@ -10,8 +10,6 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 
 	/**
 	 * 对 [begin, end) 范围的元素进行快速排序
-	 * @param begin
-	 * @param end
 	 */
 	private void sort(int begin, int end) { 
 		if (end - begin < 2) return;
@@ -24,13 +22,11 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 	} 
 	
 	/**
-	 * 构造出 [begin, end) 范围的轴点元素
-	 * @return 轴点元素的最终位置
+	 * 构造出 [begin, end) 范围的轴点元素，返回轴点元素的最终位置
 	 */
 	private int pivotIndex(int begin, int end) {
 		// 随机选择一个元素跟begin位置进行交换
 		swap(begin, begin + (int)(Math.random() * (end - begin)));
-		
 		// 备份begin位置的元素
 		T pivot = array[begin];
 		// end指向最后一个元素
@@ -42,7 +38,7 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 					end--;
 				} else { // 右边元素 <= 轴点元素
 					array[begin++] = array[end];
-					break;
+					break;//break退出是为了调转方向
 				}
 			}
 			while (begin < end) {
@@ -50,7 +46,7 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 					begin++;
 				} else { // 左边元素 >= 轴点元素
 					array[end--] = array[begin];
-					break;
+					break;//break退出是为了调转方向
 				}
 			}
 		}

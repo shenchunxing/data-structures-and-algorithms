@@ -22,16 +22,17 @@ public class InsertionSort3<T extends Comparable<T>> extends Sort<T> {
 	@Override
 	protected void sort() {
 		for (int begin = 1; begin < array.length; begin++) {
+			//将待插入的begin位置的值，插入到search(begin)的位置
 			insert(begin, search(begin));
 		}
 	}
 	
 	/**
-	 * 将source位置的元素插入到dest位置
-	 * @param source
-	 * @param dest
+	 * source：待插入元素的索引
+	 * dest：待插入的元素通过二分搜索找到的插入位置
 	 */
 	private void insert(int source, int dest) {
+		//记录下当前的值，移动后需要插入到指定位置
 		T v = array[source];
 		for (int i = source; i > dest; i--) { //腾出目标位置
 			array[i] = array[i - 1];
@@ -42,8 +43,6 @@ public class InsertionSort3<T extends Comparable<T>> extends Sort<T> {
 	/**
 	 * 利用二分搜索找到 index 位置元素的待插入位置
 	 * 已经排好序数组的区间范围是 [0, index)
-	 * @param index
-	 * @return
 	 */
 	private int search(int index) {
 		int begin = 0;

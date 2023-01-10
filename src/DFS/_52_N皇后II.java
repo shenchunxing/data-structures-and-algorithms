@@ -14,9 +14,9 @@ public class _52_N皇后II {
         System.out.println(ob.totalNQueens(8));
     }
     public int totalNQueens(int n) {
-        Set<Integer> columns = new HashSet<>();
-        Set<Integer> diagonals1 = new HashSet<>();
-        Set<Integer> diagonals2 = new HashSet<>();
+        Set<Integer> columns = new HashSet<>();//列
+        Set<Integer> diagonals1 = new HashSet<>();//对角线1
+        Set<Integer> diagonals2 = new HashSet<>();//对角线2
         return backtrack(n,0,columns,diagonals1,diagonals2);
     }
 
@@ -30,17 +30,19 @@ public class _52_N皇后II {
             for (int i = 0; i < n; i++) {
                 //去重
                 if (columns.contains(i)) continue; //列去重
-                int diagonal1 = row - i; //对角线去重
+                int diagonal1 = row - i; //对角线1去重
                 if (diagonals1.contains(diagonal1)) continue;
-                int diagonal2 = row + i; //对角线去重
+                int diagonal2 = row + i; //对角线2去重
                 if (diagonals2.contains(diagonal2)) continue;
 
-                columns.add(i); //可以放置皇后
+                columns.add(i); //放置皇后
                 diagonals1.add(diagonal1);
                 diagonals2.add(diagonal2);
+
                 //增加皇后的数量
                 count += backtrack(n, row + 1,columns,diagonals1,diagonals2);
-                //回溯
+
+                //回溯:删除放置的皇后
                 columns.remove(i);
                 diagonals1.remove(diagonal1);
                 diagonals2.remove(diagonal2);

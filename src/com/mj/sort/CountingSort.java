@@ -22,7 +22,7 @@ public class CountingSort extends Sort<Integer> {
 		for (int i = 0; i < array.length; i++) {
 			counts[array[i] - min]++;
 		}
-		// 累加次数
+		// 统计前面出现的累加次数，得到的counts[i]是每个元素在有序数组的位置
 		for (int i = 1; i < counts.length; i++) {
 			counts[i] += counts[i - 1];
 		}
@@ -33,7 +33,7 @@ public class CountingSort extends Sort<Integer> {
 			newArray[--counts[array[i] - min]] = array[i];
 		}
 		
-		// 将有序数组赋值到array
+		// 将有序数组赋值到array，变更原理的数组
 		for (int i = 0; i < newArray.length; i++) {
 			array[i] = newArray[i];
 		}

@@ -11,7 +11,7 @@ import java.util.Stack;
  */
 
 //倒推法的继续优化
-public class _739_每日温度_倒推法 {
+public class _739_每日温度 {
 	public static void main(String[] args) {
 		System.out.println(Arrays.toString(dailyTemperatures2(new int[] {73,74,75,71,69,72,76,73})));
 	}

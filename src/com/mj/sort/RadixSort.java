@@ -17,6 +17,7 @@ public class RadixSort extends Sort<Integer> {
 		// 百位数：array[i] / 100 % 10 = 5
 		// 千位数：array[i] / 1000 % 10 = ...
 
+		//不断拿到个位数、十位数、百位数、、、进行计数排序
 		for (int divider = 1; divider <= max; divider *= 10) {
 			countingSort(divider);
 		}
