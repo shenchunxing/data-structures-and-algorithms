@@ -13,8 +13,34 @@ import java.util.Stack;
 //倒推法的继续优化
 public class _739_每日温度 {
 	public static void main(String[] args) {
-		System.out.println(Arrays.toString(dailyTemperatures2(new int[] {73,74,75,71,69,72,76,73})));
+		System.out.println(Arrays.toString(dailyTemperatures1(new int[] {73,74,75,71,69,72,76,73})));
 	}
+	// 倒推法
+	static public int[] dailyTemperatures1(int[] T) {
+		if (T == null || T.length == 0)
+			return null;
+		//values存储的是第一个升温的需要的天数
+		int[] values = new int[T.length];
+		for (int i = T.length - 2; i >= 0; i--) {
+			int j = i + 1;
+			while (true) {
+				if (T[i] < T[j]) {
+					values[i] = j - i; // 找到了
+					break;
+				} else if (values[j] == 0) { // 说明j右边没有更高的值 && T[i] > T[j]
+					values[i] = 0;
+					break;
+				} else if (T[i] == T[j]) {
+					values[i] = values[j] + j - i; // 相等的情况需要在原来values[j]的基础上加j - i天
+					break;
+				} else {
+					j = j + values[j]; // 直接跳到第一个比j大的索引那里，然后继续和i比较
+				}
+			}
+		}
+		return values;
+	}
+
 	// 构建单调递减栈，单调栈里面存储索引，找到第一个比他大的，说明找到了栈顶的每日温度，然后出栈
 	static public int[] dailyTemperatures(int[] T) {
 		if (T == null || T.length == 0) return null;
@@ -47,32 +73,6 @@ public class _739_每日温度 {
 				}
 				// 当T[i] == T[j]的时候
 				j = j + values[j];
-			}
-		}
-		return values;
-	}
-
-	// 倒推法：有点动态规划的味道
-	static public int[] dailyTemperatures1(int[] T) {
-		if (T == null || T.length == 0)
-			return null;
-		//values存储的是第一个升温的需要的天数
-		int[] values = new int[T.length];
-		for (int i = T.length - 2; i >= 0; i--) {
-			int j = i + 1;
-			while (true) {
-				if (T[i] < T[j]) {
-					values[i] = j - i; // 找到了
-					break;
-				} else if (values[j] == 0) { // 说明j右边没有更高的值 && T[i] > T[j]
-					values[i] = 0;
-					break;
-				} else if (T[i] == T[j]) {
-					values[i] = values[j] + j - i; // 相等的情况需要在原来values[j]的基础上加j - i天
-					break;
-				} else {
-					j = j + values[j]; // 直接跳到第一个比j大的索引那里，然后继续和i比较
-				}
 			}
 		}
 		return values;

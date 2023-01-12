@@ -5,11 +5,10 @@ package 位运算;
  */
 public class _67_二进制求和 {
     public static void main(String[] args) {
-        _67_二进制求和 ob  = new _67_二进制求和();
-        System.out.println(ob.addBinary("1010","1011"));
+        System.out.println(addBinary("1010","1011"));
     }
     //整体思路是将两个字符串较短的用0 补齐，使得两个字符串长度一致，然后从末尾进行遍历计算，得到最终结果
-    public String addBinary(String a, String b) {
+    static public String addBinary(String a, String b) {
         StringBuilder builder = new StringBuilder();
         int ca = 0;//进位
         for (int i = a.length() - 1, j = b.length() - 1; i >= 0 || j >= 0 ; i-- ,j --) {
