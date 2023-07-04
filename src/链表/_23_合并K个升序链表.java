@@ -7,6 +7,9 @@ import common.ListNode;
  * @author shenchunxing
  *
  */
+
+/*2023-7-4*/
+/*在合并2个有序链表的基础上，两两合并*/
 public class _23_合并K个升序链表 {
 	public ListNode mergeKLists(ListNode[] lists) {
 		ListNode ans = null;

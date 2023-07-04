@@ -9,8 +9,32 @@ import common.ListNode;
  *
  */
 
+/*2023-7-4*/
 public class _2_两数相加 {
-	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+	public static void main(String[] args) {
+		// 创建测试链表 l1: 2 -> 4 -> 3
+		ListNode l1 = new ListNode(2);
+		l1.next = new ListNode(4);
+		l1.next.next = new ListNode(3);
+
+		// 创建测试链表 l2: 5 -> 6 -> 4
+		ListNode l2 = new ListNode(5);
+		l2.next = new ListNode(6);
+		l2.next.next = new ListNode(4);
+
+		// 调用函数计算结果
+		ListNode result = addTwoNumbers(l1, l2);
+
+		// 打印计算结果
+		ListNode node = result;
+		while (node != null) {
+			System.out.print(node.val + " -> ");
+			node = node.next;
+		}
+		System.out.println("null");
+	}
+
+	static public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 		if (l1 == null) return l2;
 		if (l2 == null) return l1;
 		ListNode dummNode = new ListNode(0); //设置头节点，防止链表被释放

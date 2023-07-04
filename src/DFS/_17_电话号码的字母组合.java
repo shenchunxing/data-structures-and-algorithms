@@ -6,15 +6,23 @@ import java.util.List;
 /**
  * https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
  */
+/*2023-7-4*/
 public class _17_电话号码的字母组合 {
-    private char[][] lettersArray = {
+    static char[][] lettersArray = {
             {'a', 'b', 'c'}, {'d', 'e', 'f'}, {'g', 'h', 'i'},
             {'j', 'k', 'l'}, {'m', 'n', 'o'}, {'p', 'q', 'r', 's'},
             {'t', 'u', 'v'}, {'w', 'x', 'y', 'z'}
     };
 
-    public List<String> letterCombinations(String digits) {
-        List<String> list = new LinkedList<>();//答案
+    public static void main(String[] args) {
+        String digits1 = "23";
+        List<String> result1 = letterCombinations(digits1);
+        System.out.println("Letter combinations for digits " + digits1 + ":");
+        System.out.println(result1);
+    }
+
+    static public List<String> letterCombinations(String digits) {
+        List<String> list = new LinkedList<>();
         if (digits == null) return list;
         char[] chars = digits.toCharArray();
         if (chars.length == 0) return list;
@@ -23,7 +31,8 @@ public class _17_电话号码的字母组合 {
         return list;
     }
 
-    private void dfs(List<String> list,  char[][] lettersArray, int index, char[] chars ,char[] string) {
+    static private void dfs(List<String> list,  char[][] lettersArray, int index, char[] chars ,char[] string) {
+        /*递归出口，已经扫描到了最后一层*/
         if (index == chars.length) {
             list.add(new String(string));
             return;

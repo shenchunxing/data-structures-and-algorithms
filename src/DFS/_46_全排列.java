@@ -6,6 +6,8 @@ import java.util.List;
 /**
  * https://leetcode-cn.com/problems/permutations/
  */
+
+/*2023-7-4*/
 public class _46_全排列 {
     public static void main(String[] args) {
         System.out.println(permute(new int[] {0,1}));
@@ -23,8 +25,9 @@ public class _46_全排列 {
     }
 
     static private void dfs(int idx,List<List<Integer>> list,int[] nums,int[] result,boolean[] used) {
-        // 不能再往下搜索,得到一个解
+        // 搜索到最后一层了，返回一个结果
         if (idx == nums.length) {
+            /*int数组转List*/
             List<Integer> resultList = new ArrayList<>();
             for (int value : result) {
                 resultList.add(value);
@@ -35,9 +38,9 @@ public class _46_全排列 {
 
         // 枚举这一层所有可以做出的选择
         for (int i = 0; i < nums.length; i++) {
-            if (used[i]) continue; //去重
+            if (used[i]) continue; //已经使用过了，去重
             result[idx] = nums[i];//选择一个数字
-            used[i] = true;//使用了
+            used[i] = true;//标记使用了
 
             dfs(idx + 1,list,nums,result,used);//进入下一层
 
