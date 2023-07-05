@@ -6,27 +6,38 @@ import java.util.List;
 
 /**
  * https://leetcode-cn.com/problems/3sum/
+ * 给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i != j、i != k 且 j != k ，
+ * 同时还满足 nums[i] + nums[j] + nums[k] == 0 。请
+ *
+ * 你返回所有和为 0 且不重复的三元组。
+ *
+ * 注意：答案中不可以包含重复的三元组。
  */
+/*2023-7-4*/
 public class _15_三数之和 {
     public static void main(String[] args) {
         System.out.println(threeSum(new int[] {-1,-1,0,1,1,2,-1,-4}));
     }
     //排序+ 双指针: 时间复杂度O(N^2),空间复杂度O(logN)
    static public List<List<Integer>> threeSum(int[] nums) {
+        /*排序*/
         Arrays.sort(nums);
+       /*k < nums.length - 2减少不必要的循环*/
         List<List<Integer>> res = new ArrayList<>();
         for (int k = 0; k < nums.length - 2; k++) {
             if (nums[k] > 0) break; //nums[k]是最小的数，最小的数都 > 0，不可能找到答案了
             if (k > 0 && nums[k] == nums[k - 1]) continue; //去重
+            /*i从当前遍历的下一个值开始，j从尾部开始*/
             int i = k + 1 , j  = nums.length - 1;
             while (i < j) {
                 int sum = nums[k] + nums[i] + nums[j];
                 if (sum < 0) {
-                    while (i < j && nums[i] == nums[++i]); //让i++，并去重
+                    while (i < j && nums[i] == nums[++i]); //因为sum<0。重复的值也是sum<0的。让i++，如果i++的值还是一样，继续++，直到不相等为止
                 } else if (sum > 0) {
                     while (i < j && nums[j] == nums[--j]);//让j--，并去重
                 } else {
-                    res.add(new ArrayList<Integer>(Arrays.asList(nums[k],nums[i],nums[j]))); //得到一个答案
+                    /*得到一个答案,继续去重*/
+                    res.add(new ArrayList<Integer>(Arrays.asList(nums[k],nums[i],nums[j])));
                     while (i < j && nums[i] == nums[++i]); //让i++，并去重
                     while (i < j && nums[j] == nums[--j]);//让j--，并去重
                 }
@@ -50,18 +61,20 @@ public class _15_三数之和 {
         for (int i = 0; i <= lastIdx; i++) {
             // 去重
             if (i > 0 && nums[i] == nums[i - 1]) continue;
+            /*l是左边界，r是右边界，remain表示剩余的值*/
             int l = i + 1, r = lastR, remain = -nums[i];
             while (l < r) {
+                /*左右边界求和*/
                 int sumLr = nums[l] + nums[r];
                 if (sumLr == remain) { // 找到了符合条件的三元组
                     res.add(Arrays.asList(nums[i], nums[l], nums[r]));
                     // 跳过相同的值（去重）
                     while (l < r && nums[l] == nums[l + 1]) l++;
                     while (l < r && nums[r] == nums[r - 1]) r--;
-                    // 往中间逼近
+                    //因为此时的l和r是符合条件的。且已经去重了，大胆同时往中间逼近
                     l++;
                     r--;
-                } else if (sumLr < remain) {
+                } else if (sumLr < remain) { //说明在当前i的位置，左侧位置的值太小了，需要往中间逼近
                     l++;
                 } else { // sumLr > remain
                     r--;
