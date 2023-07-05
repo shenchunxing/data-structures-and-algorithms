@@ -1,6 +1,7 @@
 package 树;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import common.TreeNode;
@@ -26,10 +27,25 @@ import common.TreeNode;
  * 
  *
  */
+/*2023-7-5*/
 public class _104_二叉树的最大深度 {
+	public static void main(String[] args) {
+		// 构建一棵二叉树
+		TreeNode root = new TreeNode(1);
+		root.left = new TreeNode(2);
+		root.right = new TreeNode(3);
+		root.left.left = new TreeNode(4);
+		root.left.right = new TreeNode(5);
+
+		// 测试 maxDepth1 函数
+		int result = maxDepth1(root);
+		int result2 = maxDepth2(root);
+		System.out.println(result);  // 输出: [1，2，3，4，5]
+		System.out.println(result2);  // 输出: [1，2，3，4，5]
+	}
 	
-	//递归：左右子树的较高者 + 1(后序遍历)
-	public int maxDepth1(TreeNode root) {
+	//递归：左右子树的较高者 + 1(后序遍历).+1是因为有个根节点
+	static public int maxDepth1(TreeNode root) {
 		if (root == null) return 0;
 		int leftDepth = maxDepth1(root.left);
 		int rightDepth = maxDepth1(root.right);
@@ -37,7 +53,7 @@ public class _104_二叉树的最大深度 {
     }
 
 	//bfs：二叉树的层级遍历
-	public int maxDepth2(TreeNode root) {
+	static public int maxDepth2(TreeNode root) {
 		if (root == null) return 0;
 		Queue<TreeNode> queue = new LinkedList<TreeNode>(); //队列里面存放的是当前层的所有节点
 		queue.add(root);

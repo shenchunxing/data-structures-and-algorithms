@@ -7,12 +7,30 @@ import java.util.Queue;
 
 import common.TreeNode;
 
+/**
+ * https://leetcode.cn/problems/binary-tree-level-order-traversal/
+ */
+/*2023-7-5*/
 public class _102_二叉树的层序遍历 {
 
-    public List<List<Integer>> levelOrder(TreeNode root) {
+    public static void main(String[] args) {
+        // 构建一棵二叉树
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+        // 测试 levelOrder 函数
+        List<List<Integer>> result = levelOrder(root);
+        System.out.println(result);  // 输出: [1，2，3，4，5]
+    }
+
+    static public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> ret = new ArrayList<List<Integer>>();
         if (root == null) return ret;
 
+        /*queue用于保存每层的节点*/
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.offer(root); //根节点入队
         while (!queue.isEmpty()) { //队列不为空
