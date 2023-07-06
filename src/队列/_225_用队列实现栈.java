@@ -6,15 +6,20 @@ import java.util.Queue;
 /**
  * https://leetcode.cn/problems/implement-stack-using-queues/
  */
+/*2023-7-6*/
 public class _225_用队列实现栈 {
-    Queue<Integer> queue = new LinkedList<>();
-
-    /** Initialize your data structure here. */
-    public class MyStack {
-
+    public static void main(String[] args) {
+        _225_用队列实现栈 myStack = new _225_用队列实现栈();
+        myStack.push(1);
+        myStack.push(2);
+        myStack.top(); // 返回 2
+        myStack.pop(); // 返回 2
+        myStack.empty(); // 返回 False
     }
 
-    /** Push element x onto stack. */
+    Queue<Integer> queue = new LinkedList<>();
+
+   /*实现push其实就是先加到单端队列(先进先出)，然后一个个remove出来，并添加到stack上，此时变成了后进先出符合stack特性了*/
     public void push(int x) {
         queue.add(x);
         int size = queue.size();

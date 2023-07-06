@@ -2,7 +2,11 @@ package 动态规划;
 
 /**
  * https://leetcode.cn/problems/coin-change/
+ * 给你一个整数数组 coins ，表示不同面额的硬币；以及一个整数 amount ，表示总金额。
+ * 计算并返回可以凑成总金额所需的 最少的硬币个数 。如果没有任何一种硬币组合能组成总金额，返回-1 。
+ * 你可以认为每种硬币的数量是无限的。
  */
+/*2023-7-6，还需要理解下*/
 public class _322_零钱兑换 {
 
     public static void main(String[] args) {
@@ -15,11 +19,11 @@ public class _322_零钱兑换 {
         //每一轮可以得到满足最大值是i的情况下，最小的硬币个数。
         for (int i = 1; i <= n; i++) {
             int min = Integer.MAX_VALUE;
-            for (int face : faces) { //选了face面值的硬币
-                if (i < face) continue;
-                int v = dp[i - face];//凑够i - face，需要的最少硬币个数
-                if (v < 0 || v >= min) continue;
-                min = v;//记录凑够i，需要的最少硬币个数
+            for (int face : faces) { //选择硬币
+                if (i < face) continue; //当前数小于硬币，无法选择硬币
+                int v = dp[i - face];//选了face面值的硬币，同时计算凑够i - face，需要的最少硬币个数
+                if (v < 0 || v >= min) continue; //不合法，跳过就行
+                min = v;//记录凑够i，需要的最少硬币个数，这个值没加上选择的face面值的硬币，最后计算的时候需要加上
             }
             if (min == Integer.MAX_VALUE) { //没有选择过硬币
                 dp[i] = -1;

@@ -8,4 +8,14 @@ public class ListNode {
 	public String toString() {
 		return val + " -> " + next;
 	}
+
+	/*打印链表*/
+	public void printLinkedList() {
+		ListNode current = this;
+		while (current != null) {
+			System.out.print(current.val + " -> ");
+			current = current.next;
+		}
+		System.out.println("null");
+	}
 }
