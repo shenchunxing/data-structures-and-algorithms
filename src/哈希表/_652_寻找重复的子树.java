@@ -9,6 +9,9 @@ import java.util.Map;
 
 /**
  * https://leetcode.cn/problems/find-duplicate-subtrees/
+ * 给你一棵二叉树的根节点 root ，返回所有 重复的子树 。
+ * 对于同一类的重复子树，你只需要返回其中任意 一棵 的根结点即可。
+ * 如果两棵树具有 相同的结构 和 相同的结点值 ，则认为二者是 重复 的。
  */
 public class _652_寻找重复的子树 {
     //序列化

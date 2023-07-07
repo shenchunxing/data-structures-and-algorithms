@@ -6,7 +6,7 @@ package 动态规划;
  *
  * 给定一个代表每个房屋存放金额的非负整数数组，计算你 在不触动警报装置的情况下 ，今晚能够偷窃到的最高金额。
  */
-/*2023-7-4*/
+/*2023-7-6*/
 public class _213_打家劫舍II {
     public static void main(String[] args) {
         System.out.println(rob(new int[] {1,2,3,1}));

@@ -5,7 +5,10 @@ import java.util.List;
 
 /**
  * https://leetcode-cn.com/problems/spiral-matrix/
+ * 难度：中等
+ * 给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素。
  */
+/*2023-7-7*/
 public class _54_螺旋矩阵 {
     public static void main(String[] args) {
 //        System.out.println(spiralOrder(new int[][] {{1,2,3},{4,5,6},{7,8,9}}));
