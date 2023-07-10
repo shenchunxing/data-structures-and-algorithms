@@ -2,13 +2,19 @@ package 排序指针;
 
 /**
  * https://leetcode-cn.com/problems/valid-anagram/
- * 
- * @author MJ
- *
+ * 难度：简单
+ * 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+ * 注意：若s 和 t中每个字符出现的次数都相同，则称s 和 t互为字母异位词。
  */
+
+/*2023-7-10*/
 public class _242_有效的字母异位词 {
-	// s == anagram
-    public boolean isAnagram(String s, String t) {
+	public static void main(String[] args) {
+		System.out.println(isAnagram("anagram","nagaram"));
+		System.out.println(isAnagram("rat","car"));
+	}
+	// 比较两个字符串每个字符的数量，
+    static public boolean isAnagram(String s, String t) {
     	if (s == null || t == null) return false;
     	char[] schars = s.toCharArray();
     	char[] tchars = t.toCharArray();
