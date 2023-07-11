@@ -5,6 +5,7 @@ import common.ListNode;
 /**
  * https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/
  */
+/*2023-7-11*/
 public class 剑指Offer18_删除链表的节点 {
     public static void main(String[] args) {
         ListNode head = new ListNode(3);

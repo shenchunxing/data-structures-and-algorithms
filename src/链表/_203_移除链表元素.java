@@ -4,24 +4,32 @@ import common.ListNode;
 
 /**
  * https://leetcode-cn.com/problems/remove-linked-list-elements/
- * 
- * @author MJ
- *
+ * 难度：简单
+ * 给你一个链表的头节点 head 和一个整数 val ，请你删除链表中所有满足 Node.val == val 的节点，并返回 新的头节点
  */
+/*2023-7-11*/
 public class _203_移除链表元素 {
+	public static void main(String[] args) {
+		ListNode root = new ListNode(1);
+		root.next = new ListNode(2);
+		root.next.next = new ListNode(2);
+		root.next.next.next = new ListNode(3);
+		root.next.next.next.next = new ListNode(4);
 
+		System.out.println(removeElements2(root,2));
+	}
 	//虚拟头节点
-	public ListNode removeElements2(ListNode head, int val) {
+	static public ListNode removeElements2(ListNode head, int val) {
 		ListNode newHead = new ListNode(-1);
-		ListNode newTail  = newHead;//尾节点
+		ListNode newTail  = newHead;//尾指针
 		while (head != null) {
 			if (head.val != val) {
-				newTail.next = head; //关联起来
-				newTail = head;//重新设置尾节点
+				newTail.next = head; //让尾指针将节点串起来
+				newTail = head;//重新设置尾指针
 			}
 			head = head.next;
 		}
-		newTail.next = null; //最后设置空
+		newTail.next = null; //最后尾指针设置空
 		return newHead.next;
 	}
 

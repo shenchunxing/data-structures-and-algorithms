@@ -14,6 +14,13 @@ public class TreeNode {
         val = x;
     }
 
+    public static void preorderTraversal(TreeNode root) {
+        if (root == null) return;
+        System.out.print(root.val + " ");
+        preorderTraversal(root.left);
+        preorderTraversal(root.right);
+    }
+
     @Override
     public String toString() {
         List<String> nodes = new ArrayList<>();
