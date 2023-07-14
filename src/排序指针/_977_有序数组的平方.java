@@ -15,8 +15,6 @@ public class _977_有序数组的平方 {
     }
 	/**
 	 * 双指针,逆序填充
-	 * @param nums
-	 * @return
 	 */
 	//[-4,-1,0,3,10] -> [0,1,9,16,100]
 	static public int[] sortedSquares(int[] nums) {
