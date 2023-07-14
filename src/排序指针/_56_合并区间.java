@@ -7,12 +7,15 @@ import java.util.List;
 
 /**
  * https://leetcode.cn/problems/merge-intervals/
+ * 难度：中等
  * 以数组 intervals 表示若干个区间的集合，其中单个区间为 intervals[i] = [starti, endi] 。
  * 请你合并所有重叠的区间，并返回一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间。
  */
 public class _56_合并区间 {
     public static void main(String[] args) {
-        System.out.println(merge(new int[][] {{1,3},{2,6},{8,10},{15,18}}));
+        int[][] intervals= {{1,3},{2,6},{8,10},{15,18}};
+        int[][] ans = merge(intervals);
+        System.out.println(Arrays.deepToString(ans));
     }
     //O(nlogn) O(logn)
     static public int[][] merge(int[][] intervals) {

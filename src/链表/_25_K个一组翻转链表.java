@@ -4,8 +4,13 @@ import common.ListNode;
 
 /**
  * https://leetcode.cn/problems/reverse-nodes-in-k-group/
+ * 难度：困难
  * 给你链表的头节点 head ，每 k 个节点一组进行翻转，请你返回修改后的链表。
+ * k 是一个正整数，它的值小于或等于链表的长度。如果节点总数不是k的整数倍，那么请将最后剩余的节点保持原有顺序。
+ *
+ * 你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。
  */
+/*2023-7-14*/
 public class _25_K个一组翻转链表 {
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
@@ -19,13 +24,17 @@ public class _25_K个一组翻转链表 {
 
     static public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null) return head;
-        ListNode tail = head;//tail是尾巴节点
+        ListNode tail = head;//tail是指向尾部节点的指针
+        /*让tail指向从head出发，走了k步的节点，注意因为tail是从head出发的，实际上tail走到的是下一次翻转的头节点位置*/
         for (int i = 0; i < k; i++) {
-            if (tail == null) return head; //链表长度太短，不足以翻转
+            if (tail == null) return head; //还没走到k就走完了链表，说明链表长度太短，不足以翻转
             tail = tail.next;
         }
-        ListNode newHead = reverse(head,tail);//翻转前k个元素,不包括tail节点
-        head.next = reverseKGroup(tail,k);//下一轮开始的地方就是tail
+        //翻转前k个元素,不包括tail节点
+        /*进行了一次反转，得到新链表的头结点newHead。*/
+        ListNode newHead = reverse(head,tail);
+        /*目前head的next应该指向以tail节点为根节点的链表了，注意这里不能直接head.next = tail，因为这是一个递归过程，会执行多次翻转*/
+        head.next = reverseKGroup(tail,k);
         return newHead;
     }
 

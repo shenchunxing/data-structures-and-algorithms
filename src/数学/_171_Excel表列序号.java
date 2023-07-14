@@ -4,9 +4,10 @@ import java.util.Iterator;
 
 /**
  * https://leetcode-cn.com/problems/excel-sheet-column-number/
- * @author shenchunxing
- *
+ * 难度：简单
+ * 给你一个字符串 columnTitle ，表示 Excel 表格中的列名称。返回 该列名称对应的列序号 。
  */
+/*2023-7-14*/
 public class _171_Excel表列序号 {
 
     public static void main(String[] args) {
