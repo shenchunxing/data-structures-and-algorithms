@@ -2,11 +2,16 @@ package 位运算;
 
 /**
  * https://leetcode.cn/problems/shu-zhi-de-zheng-shu-ci-fang-lcof/
+ * 难度：中等
  * 本题与主站 50 题相同：https://leetcode-cn.com/problems/powx-n/
+ * 实现 pow(x, n) ，即计算 x 的 n 次幂函数（即，xn）。不得使用库函数，同时不需要考虑大数问题。
+ * 思路：递归+分治、快速幂算法（迭代）
  */
+/*2023-7-18*/
 public class 剑指Offer16_数值的整数次方 {
     public static void main(String[] args) {
         System.out.println(myPow2(4,3));
+        System.out.println(myPow2(4,2));
     }
 
     //递归+分治思想 O(logn)
@@ -20,7 +25,7 @@ public class 剑指Offer16_数值的整数次方 {
         return ((n & 1) == 1) ? (half * x) : half;
     }
 
-    //快速幂算法
+    //快速幂算法(不理解)
     //迭代
     public double myPow(double x, int n) {
         if (x == 0) return 0; //避免 x = 1/ x 报错

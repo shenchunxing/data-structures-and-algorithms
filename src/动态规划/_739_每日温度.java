@@ -5,16 +5,37 @@ import java.util.Stack;
 
 /**
  * https://leetcode-cn.com/problems/daily-temperatures/
- * 
- * @author MJ
- *
+ * 给定一个整数数组temperatures，表示每天的温度，返回一个数组answer，其中answer[i]是指对于第 i 天，下一个更高温度出现在几天后。如果气温在这之后都不会升高，请在该位置用0 来代替。
  */
-
 //倒推法的继续优化
+/*2023-7-18*/
 public class _739_每日温度 {
 	public static void main(String[] args) {
+		/*倒推法*/
 		System.out.println(Arrays.toString(dailyTemperatures1(new int[] {73,74,75,71,69,72,76,73})));
+		/*单调栈*/
+		System.out.println(Arrays.toString(dailyTemperatures(new int[] {73,74,75,71,69,72,76,73})));
 	}
+
+	// 单调递减栈，更好理解，倒推法不好理解
+	static public int[] dailyTemperatures(int[] T) {
+		if (T == null || T.length == 0) return null;
+		int[] result = new int[T.length];
+		Stack<Integer> stack = new Stack<>();
+		for (int i = 0; i < T.length; i++) {
+			//栈是单调递减的找到了第一个比栈顶大的的元素
+			while (!stack.isEmpty() && T[i] > T[stack.peek()]) {
+				/*result[栈顶元素的下标] = 间距*/
+				result[stack.peek()] = i - stack.peek();
+				/*已经找到了，出栈*/
+				stack.pop();
+			}
+			/*每个索引都要入栈*/
+			stack.push(i);
+		}
+		return result;
+	}
+
 	// 倒推法
 	static public int[] dailyTemperatures1(int[] T) {
 		if (T == null || T.length == 0)
@@ -39,22 +60,6 @@ public class _739_每日温度 {
 			}
 		}
 		return values;
-	}
-
-	// 构建单调递减栈，单调栈里面存储索引，找到第一个比他大的，说明找到了栈顶的每日温度，然后出栈
-	static public int[] dailyTemperatures(int[] T) {
-		if (T == null || T.length == 0) return null;
-		int[] result = new int[T.length];
-		Stack<Integer> stack = new Stack<>();
-		for (int i = 0; i < T.length; i++) {
-			//栈是单调递减的找到了第一个比栈顶大的的元素
-			while (!stack.isEmpty() && T[i] > T[stack.peek()]) {
-				result[stack.peek()] = i - stack.peek();
-				stack.pop();
-			}
-			stack.push(i);//存储索引
-		}
-		return result;
 	}
 
 	static public int[] dailyTemperatures2(int[] T) {

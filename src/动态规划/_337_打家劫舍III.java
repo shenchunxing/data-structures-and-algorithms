@@ -7,6 +7,15 @@ import common.TreeNode;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * https://leetcode.cn/problems/house-robber-iii/
+ * 小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为root。
+ *
+ * 除了root之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。 如果 两个直接相连的房子在同一天晚上被打劫 ，房屋将自动报警。
+ *
+ * 给定二叉树的root。返回在不触动警报的情况下，小偷能够盗取的最高金额。
+ */
+/*2023-7-18*/
 public class _337_打家劫舍III {
     /**
      * 简化题意：一棵二叉树，树上的每个点都有对应的权值，每个点有两种状态（选中和不选中）
@@ -21,11 +30,15 @@ public class _337_打家劫舍III {
     //l表示左子树，选中和不选中
     //r表示右子树，选中和不选中
     private int[] dfs(TreeNode node) {
+        /*遍历结束*/
         if (node == null) return new int[] {0,0};
         int[] l = dfs(node.left);
         int[] r = dfs(node.right);
-        int selected = node.val + l[1] + r[1];//node.val + 左右子树不被选中的权值和
-        int noselected = Math.max(l[0],l[1]) + Math.max(r[0],r[1]);//左右子树选不选中的较大值相加
+        /*选中当前节点node.val,则左右子树不能被选中l[1] + r[1]的权值和*/
+        int selected = node.val + l[1] + r[1];
+        /*不选当前节点node.val，左右子树我可以选择选也可以选择不选，取各自的较大值*/
+        int noselected = Math.max(l[0],l[1]) + Math.max(r[0],r[1]);
+        /*返回的是选中当前节点和不选中当前节点的两个值*/
         return new int[] {selected,noselected};
     }
 
