@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * https://leetcode-cn.com/problems/copy-list-with-random-pointer/
  * 
- * @author shenchunxing
+ * 哈希表、链表
  *
  */
 //题意：输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
@@ -31,11 +31,16 @@ public class _138_复制带随机指针的链表 {
 	//当前节点完成创建后，去创建next和random节点，返回节点，这样就完成了一次链表的拷贝操作。
 	public Node copyRandomList(Node head) {
 		if (head == null) return null;
-		if (cachedNodeMap.containsKey(head)) return cachedNodeMap.get(head); //节点已经存在，防止重复拷贝
-		Node node = new Node(head.val); //拷贝根节点
-		cachedNodeMap.put(head, node);//缓存
-		node.next = copyRandomList(head.next); //拷贝next节点
-		node.random = copyRandomList(head.random); //拷贝random节点
+		/*节点已经存在，直接返回*/
+		if (cachedNodeMap.containsKey(head)) return cachedNodeMap.get(head);
+		/*创建新节点*/
+		Node node = new Node(head.val);
+		/*并保存到哈希表*/
+		cachedNodeMap.put(head, node);
+		/*拷贝next节点*/
+		node.next = copyRandomList(head.next);
+		/*拷贝random节点*/
+		node.random = copyRandomList(head.random);
 		return node;
 	}
 

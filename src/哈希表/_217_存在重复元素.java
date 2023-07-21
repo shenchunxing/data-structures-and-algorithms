@@ -6,8 +6,8 @@ import java.util.Set;
 
 /**
  * https://leetcode.cn/problems/contains-duplicate/
+ * 数组、哈希表、排序
  */
-/*2023-7-4*/
 public class _217_存在重复元素 {
     public static void main(String[] args) {
         System.out.println(containsDuplicate(new int[] {1,3,5,6,4,2}));

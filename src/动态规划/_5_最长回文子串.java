@@ -2,9 +2,7 @@ package 动态规划;
 
 /**
  * https://leetcode-cn.com/problems/longest-palindromic-substring/
- * 
- * @author MJ
- *
+ * 字符串、动态规划
  */
 public class _5_最长回文子串 {
 

@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 
 /**
  * https://leetcode-cn.com/problems/meeting-rooms-ii/
+ * 给你一个会议时间安排的数组 intervals ，每个会议时间都会包括开始和结束的时间 intervals[i] = [starti, endi] ，返回 所需会议室的最小数量
  */
 public class _253_会议室II {
     public static void main(String[] args) {
@@ -18,11 +19,12 @@ public class _253_会议室II {
         int[] begins = new int[intervals.length];
         // 存放所有会议的结束时间
         int[] ends = new int[intervals.length];
+        /*记录所有会议的开始和结束时间*/
         for (int i = 0; i < intervals.length; i++) {
             begins[i] = intervals[i][0];
             ends[i] = intervals[i][1];
         }
-        // 排序
+        // 按照开始时间和结束时间从小到大排序
         Arrays.sort(begins);
         Arrays.sort(ends);
 

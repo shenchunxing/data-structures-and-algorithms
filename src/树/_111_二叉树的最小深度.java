@@ -5,7 +5,7 @@ package 树;
  *
  */
 import common.TreeNode;
-public class _111_二叉树的最小深度_简单_递归 {
+public class _111_二叉树的最小深度 {
 	
 	public int minDepth(TreeNode root) {
 		if (root == null) return 0;

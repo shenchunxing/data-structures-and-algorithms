@@ -26,7 +26,6 @@ import common.TreeNode;
  * 	  / \   \
  * 	 5   4   7
  */
-/*2023-7-11*/
 public class _617_合并二叉树 {
     public static void main(String[] args) {
         TreeNode root1 = new TreeNode(1);

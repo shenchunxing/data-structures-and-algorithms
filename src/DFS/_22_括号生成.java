@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * https://leetcode-cn.com/problems/generate-parentheses/
+ * dfs、中等
  */
 /*2023-7-4*/
 public class _22_括号生成 {

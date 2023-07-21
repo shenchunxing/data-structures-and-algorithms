@@ -14,8 +14,8 @@ import java.util.PriorityQueue;
 /**
  * https://leetcode.cn/problems/top-k-frequent-elements/
  * 给你一个整数数组 nums 和一个整数 k ，请你返回其中出现频率前 k 高的元素。你可以按 任意顺序 返回答案。
+ * 哈希表、优先级队列、中等
  */
-/*2023-7-4*/
 public class _347_前K个高频元素 {
     public static void main(String[] args) {
         int[] arrays = new int[] {1,1,1,2,2,3};

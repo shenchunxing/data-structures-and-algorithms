@@ -7,8 +7,8 @@ package 动态规划;
 public class _416_分割等和子集 {
     public static void main(String[] args) {
         _416_分割等和子集 ob = new _416_分割等和子集();
-        System.out.println(ob.canPartition(new int[] {1,3,5,9}));
-        System.out.println(ob.canPartition(new int[] {1,3,5,6}));
+        System.out.println(ob.canPartition(new int[] {1,3,5,9}));//true
+        System.out.println(ob.canPartition(new int[] {1,3,5,6}));//false
     }
     //动态规划：0-1背包问题
     public boolean canPartition(int[] nums) {

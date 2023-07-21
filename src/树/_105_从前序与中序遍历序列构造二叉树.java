@@ -8,8 +8,9 @@ import java.util.Map;
 /**
  * https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
  * 给定两个整数数组preorder 和 inorder，其中preorder 是二叉树的先序遍历， inorder是同一棵树的中序遍历，请构造二叉树并返回其根节点
+ *
+ * 树、数组、哈希表
  */
-/*2023-7-5*/
 public class _105_从前序与中序遍历序列构造二叉树 {
     public static void main(String[] args) {
         int[] preorder = {3,9,20,15,7};
