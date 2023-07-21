@@ -31,6 +31,7 @@ public class _15_三数之和 {
             int i = k + 1 , j  = nums.length - 1;
             while (i < j) {
                 int sum = nums[k] + nums[i] + nums[j];
+                /*注意：在去重过程中要始终保持i < j 这个条件*/
                 if (sum < 0) {
                     while (i < j && nums[i] == nums[++i]); //因为sum<0。重复的值也是sum<0的。让i++，如果i++的值还是一样，继续++，直到不相等为止
                 } else if (sum > 0) {

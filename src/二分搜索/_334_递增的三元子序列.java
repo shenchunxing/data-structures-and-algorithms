@@ -21,7 +21,7 @@ public class _334_递增的三元子序列 {
                 small = num;
             } else if (num <= mid ) {//至此，num肯定大于small
                 mid = num;
-            } else if (num > mid) { //至此，num肯定大于small和mid
+            } else if (num > mid) { //至此，num肯定大于small和mid，且mid > small
                 return true;
             }
         }

@@ -12,6 +12,7 @@ public class 剑指Offer03_数组中重复的数字 {
     public static void main(String[] args) {
         System.out.println(findRepeatNumber(new int[] {2, 3, 1, 0, 2, 5, 3}));
     }
+    /*哈希表*/
     static public int findRepeatNumber(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int num : nums) {

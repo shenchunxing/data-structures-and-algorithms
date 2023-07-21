@@ -29,7 +29,7 @@ public class _236_二叉树的最近公共祖先 {
 
         // 测试
         TreeNode p = root.left; //5
-        TreeNode q = root.left.right.right;//4
+        TreeNode q = root.right.right;//8
         TreeNode lowestCommonAncestor = lowestCommonAncestor(root, p, q);
         System.out.println("最近公共祖先: " + lowestCommonAncestor.val);
     }
@@ -41,13 +41,14 @@ public class _236_二叉树的最近公共祖先 {
      * ④ 如果只有q存在于这棵二叉树中，返回q
      */
     static public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        //p或者q为根节点的情况：root就是最近公共祖先
+        //如果根节点 root 为 null，说明当前子树为空树，直接返回 null。
+        //根节点 root 等于 p 或 q，说明 p 或 q 中的一个已经找到，那么根节点 root 就是最近公共祖先，直接返回 root。
         if (root == null || root == p || root == q) return root;
         // 以root.left为根节点的二叉树中查找p、q的最近公共祖先
         TreeNode left = lowestCommonAncestor(root.left, p, q);
         // 以root.right为根节点的二叉树中查找p、q的最近公共祖先
         TreeNode right = lowestCommonAncestor(root.right, p, q);
-        //左右子树都没有找到，则root就是最近公共祖先
+        //如果 left 和 right 都不为 null，说明 p 和 q 分别在rootd的左子树和右子树中找到，那么当前根节点 root 就是最近公共祖先，直接返回 root。
         if (left != null && right != null) return root;
         //只有一边可以找到，那一边的根节点就是最近公共祖先
         return (left != null) ? left : right;

@@ -32,7 +32,8 @@ public class _22_括号生成 {
             /*选好后剩余左括号数量leftRemain - 1，然后进入下一层，*/
             dfs(chars,leftRemain - 1,rightRemain ,index + 1,ans);
         }
-        //什么时候选择右括号？如果左右括号数量不相等，且右括号数量还有，可以选择右括号
+        //什么时候选择右括号？如果左右括号数量不相等（意思是前面有选择左括号），且右括号数量还有
+        //rightRemain > 0不能省略，递归的时候需要rightRemain - 1
         if (rightRemain > 0 && leftRemain != rightRemain) {
             chars[index] = ')';
             dfs(chars,leftRemain,rightRemain - 1,index + 1,ans);

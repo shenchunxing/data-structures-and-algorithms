@@ -2,6 +2,7 @@ package 动态规划;
 
 /**
  * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
+ * 难度：中等
  * 给你一个整数数组 prices ，其中prices[i] 表示某支股票第 i 天的价格。
  * 在每一天，你可以决定是否购买和/或出售股票。你在任何时候最多只能持有 一股 股票。你也可以先购买，然后在 同一天 出售。
  * 返回 你能获得的 最大 利润 。
@@ -12,6 +13,10 @@ public class _122_买卖股票的最佳时机II {
     }
     /**
      * 这题最佳算法为贪心算法O(n)：没有交易次数限制，每次涨的前一天买入，下一天卖出，每次都有获利
+     * 为什么这么做就是最大利润了呢？
+     * 分3种情况：1。单独交易日：昨天买入，今天卖出prices[i] - prices[i - 1]，前提是今天的价格比昨天高，才有利润
+     *   2.连续上涨交易日，p1,p2,p3,p4.最大利润是p4 - p1,相当于每天有利润的单独交易日 p4 - p3 + p3 - p2 + p2 - p1
+     *   3.连续亏损，不考虑，不进行买卖。利润为0
      */
    static public int maxProfit(int[] prices) {
          int n = prices.length;

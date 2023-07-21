@@ -32,8 +32,9 @@ public class _56_合并区间 {
         for (int i = 0; i < intervals.length; i++) {
             //当前遍历的时段的开始值和结束值
             int start = intervals[i][0] , end = intervals[i][1];
-            //如果数组是空的， 或者 起始时间的最大的时段的结束时间小于时段的开始时间，则需要新增
-            if (merged.size() ==0 || merged.get(merged.size() - 1)[1] < start) {
+            // 如果数组是空的，这个情况不要漏
+            // 或者 起始时间的最大的时段的结束时间小于时段的开始时间，则需要新增
+            if (merged.size() == 0 || merged.get(merged.size() - 1)[1] < start) {
                 merged.add(new int[]{start,end});
             } else {
                 //较大值作为结束时间

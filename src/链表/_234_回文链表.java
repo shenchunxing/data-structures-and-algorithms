@@ -30,7 +30,7 @@ public class _234_回文链表 {
 		ListNode oldRhead = rHead;
 		ListNode lHead = head;
 
-		//一个个比较,如果链表长度是偶数，左右链表长度相等。如果是奇数，右侧链表少一个节点.遍历右侧链表比较好。
+		//一个个比较,如果链表长度是偶数，左右链表长度相等。如果是奇数，右侧链表少一个节点.因此遍历右侧链表比较好。
 		while (rHead != null)  {
 			if (rHead.val != lHead.val) {
 				return false;

@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * https://leetcode.cn/problems/subsets/
+ * 难度：中等
  * 给你一个整数数组 nums ，数组中的元素 互不相同 。返回该数组所有可能的子集（幂集）。
  * 解集 不能 包含重复的子集。你可以按 任意顺序 返回解集
  */
@@ -33,7 +34,7 @@ public class _78_子集 {
         dfs(nums,index + 1,ans,path);
         /*回溯到此处，删掉最后的值*/
         path.remove(path.size() - 1);
-        /*进入下一层，index++*/
+        /*进入下一层，index++，第一次进入这里，说明包含全部元素的子集已经选了，剩下的就是不包含全部元素的子集了*/
         dfs(nums,index + 1,ans,path);
     }
 }

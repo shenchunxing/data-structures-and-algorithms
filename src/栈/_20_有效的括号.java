@@ -32,7 +32,8 @@ public class _20_有效的括号 {
 		 for (int i = 0; i < s.length(); i++) {
 			 char c = s.charAt(i);
 			 if (map.containsKey(c)) { //取出任意一个右括号
-				 if (stack.isEmpty() || map.get(c) != stack.peek())  return false; //栈为空或栈顶元素不是对应的左括号，不是有效的
+				 /*如果栈为空或栈顶元素不是对应的左括号，不是有效的*/
+				 if (stack.isEmpty() || map.get(c) != stack.peek())  return false;
 				 stack.pop(); //出栈
 			 } else { //左括号入栈
 				 stack.push(c);

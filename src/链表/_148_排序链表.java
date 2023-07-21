@@ -4,10 +4,21 @@ import common.ListNode;
 
 /**
  * https://leetcode.cn/problems/sort-list/
+ * 难度：中等
+ * 给你链表的头结点 head ，请将其按 升序 排列并返回 排序后的链表 。
  */
 public class _148_排序链表 {
+    public static void main(String[] args) {
+        ListNode head = new ListNode(4);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(1);
+        head.next.next.next = new ListNode(3);
+
+        System.out.println(sortList(head));
+    }
+
     //分治+递归
-    public ListNode sortList(ListNode head) {
+    static public ListNode sortList(ListNode head) {
         if (head == null || head.next == null)  return head;
 
         //先找到中间节点slow

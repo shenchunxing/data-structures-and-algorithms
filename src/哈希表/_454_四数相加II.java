@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 /**
  * https://leetcode.cn/problems/4sum-ii/
+ * 难度：中等
+ * 给你四个整数数组 nums1、nums2、nums3 和 nums4 ，数组长度都是 n ，请你计算有多少个元组 (i, j, k, l) 能满足：
+ *
+ * 0 <= i, j, k, l < n
+ * nums1[i] + nums2[j] + nums3[k] + nums4[l] == 0
  */
 public class _454_四数相加II {
     public static void main(String[] args) {
@@ -27,7 +32,9 @@ public class _454_四数相加II {
         //记录后2个数组的负数和，以及出现的次数
         for (int i = 0; i < nums3.length; i++) {
             for (int j = 0; j < nums4.length; j++) {
+                /*取反*/
                 int sum = -nums3[i] - nums4[j];
+                /*得到匹配为0的情况，同时拿到了匹配的次数*/
                 if (map.containsKey(sum)) {
                     count += map.get(sum);
                 }

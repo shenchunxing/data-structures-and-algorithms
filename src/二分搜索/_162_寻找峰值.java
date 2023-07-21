@@ -11,14 +11,18 @@ package 二分搜索;
 /*2023-7-6*/
 public class _162_寻找峰值 {
     public static void main(String[] args) {
-        System.out.println(findPeakElement(new int[] {1,2,3,1}));
+        System.out.println(findPeakElement(new int[] {1,2,3,1}));//2
+        System.out.println(findPeakElement(new int[] {1,2,1,3,5,6,4}));//1或5
     }
 
+    /*注意：题意不是找最大值，是找一个峰值即可*/
+    /*峰值：nums[mid] > nums[mid + 1] && nums[mid] > nums[mid - 1]*/
     static public int findPeakElement(int[] nums) {
         int l = 0 ,r = nums.length - 1;
         while (l < r) {
             int mid = (l + r) >> 1;
-            /*为什么这里可以直接使用二分搜索，因为这个条件nums[i] != nums[i + 1]，所以如果nums[mid] > nums[mid + 1]，则最大值肯定在左半区*/
+            /*为什么这里可以直接使用二分搜索，因为题目有这个条件nums[i] != nums[i + 1]，
+            所以如果nums[mid] > nums[mid + 1]，则峰值在左半区肯定有峰值*/
             if (nums[mid] > nums[mid + 1]) {
                 r = mid;
             }else {

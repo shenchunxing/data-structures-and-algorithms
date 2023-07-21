@@ -36,7 +36,7 @@ public class _54_螺旋矩阵 {
             }
             right--;
 
-            // 奇数行、偶数列的时候会有重复，直接跳出循环
+            // 螺旋区域已经缩小到一个点、一行或者一列的情况。此时，再继续进行循环没有意义，并且可能会导致重复输出已经输出过的元素
             if (top > bottom || left > right) break;
 
             // right bottom -> left bottom

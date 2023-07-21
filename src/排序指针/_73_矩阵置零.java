@@ -58,22 +58,24 @@ public class _73_矩阵置零 {
     }
 
 
-    //标记数组O(mn) O(m + n)
+    //标记数组O(mn) 、O(m + n)
     public void setZeroes2(int[][] matrix) {
         int m = matrix.length , n = matrix[0].length;
         boolean[] row = new boolean[m];
         boolean[] col = new boolean[n];
+        /*先标记*/
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (matrix[i][j] == 0) {
-                    row[i] = col[j] = true; //记录行和列
+                    row[i] = col[j] = true; //记录i行和j列都需要清零
                 }
             }
         }
+        /*后清零*/
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (row[i] || col[j]) {
-                    matrix[i][j] = 0;//设置0
+                    matrix[i][j] = 0;//在i行j列都需要清零
                 }
             }
         }

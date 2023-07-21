@@ -30,16 +30,13 @@ public class _146_LRU缓存机制 {
     public int get(int key) {
         Node node = map.get(key);
         if (node == null) return -1;
-
-        removeNode(node);//移除node节点，重新添加node节点到first后面
+        /*因为查询了该节点，需移除node节点，重新添加node节点到first后面*/
+        removeNode(node);
         addAfterFirst(node);
-
         return node.value;
     }
 
-    /**
-     * @param node 将node节点插入到first节点的后面
-     */
+    /*将node节点插入到first节点的后面*/
     private void addAfterFirst(Node node) {
         // node与first.next
         node.next = first.next;
@@ -50,9 +47,7 @@ public class _146_LRU缓存机制 {
         node.prev = first;
     }
 
-    /**
-     * @param node 从双向链表中删除node节点
-     */
+    /*从双向链表中删除node节点*/
     private void removeNode(Node node) {
         node.next.prev = node.prev;
         node.prev.next = node.next;
@@ -60,18 +55,21 @@ public class _146_LRU缓存机制 {
 
     public void put(int key, int value) {
         Node node = map.get(key);
-        if (node != null) { //如果已经存在链表中，则替换value，并从链表中删除掉。再加回到first后面
+        /*如果已经存在链表中，则替换value，并从链表中删除掉。再加回到first后面*/
+        if (node != null) {
             node.value = value;
             removeNode(node);
-        } else { // 添加一对新的key-value，如果已经达到了最大容量 ，则删除链表的最后节点，同时保存到哈希表，并插入该新节点到first后面
+            /*添加一对新的key-value*/
+        } else {
+            /*如果已经达到了最大容量 ，则删除链表的最后节点*/
             if (map.size() == capacity) {
-                // 淘汰最近最少使用的node\
+                // 淘汰最近最少使用的node
                 removeNode(map.remove(last.prev.key));
-//                map.remove(last.prev.key);
-//                removeNode(last.prev);
             }
+            /*同时更新哈希表*/
             map.put(key, node = new Node(key, value));
         }
+        /*添加到链表头部*/
         addAfterFirst(node);
     }
 

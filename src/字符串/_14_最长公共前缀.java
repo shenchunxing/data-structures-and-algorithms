@@ -11,15 +11,16 @@ public class _14_最长公共前缀 {
 	}
 	static public String longestCommonPrefix(String[] strs) {
 		if (strs == null || strs.length == 0) return "";
-		String firststr = strs[0]; //第一个字符串
+		/*取出第一个字符串作为标杆*/
+		String firststr = strs[0];
 		for (int i = 0; i < firststr.length(); i++) {
 			char c = firststr.charAt(i);
-			//j从1开始，因为0就是firststr
-			for (int j = 1; j < strs.length; j++) { //firststr的每个字符都需要遍历每个字符串的i位置去匹配
+			//从第二个字符串开始，匹配第一个字符串的每个字符
+			for (int j = 1; j < strs.length; j++) {
 				String strj = strs[j];
-				//如果不匹配,返回
-				//如果遍历结束了,返回
-				if (c != strj.charAt(i) || i == strj.length() ) {
+				//如果不匹配,可以返回了
+				//如果有些较短的字符串遍历结束了,返回
+				if (i == strj.length() || c != strj.charAt(i)) {
 					return firststr.substring(0,i);
 				}
 			}

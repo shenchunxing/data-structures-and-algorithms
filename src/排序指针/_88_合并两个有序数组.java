@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 /**
  * https://leetcode-cn.com/problems/merge-sorted-array/
- * 难度：中等
  * 给你两个按 非递减顺序 排列的整数数组nums1 和 nums2，另有两个整数 m 和 n ，分别表示 nums1 和 nums2 中的元素数目。
  * 请你 合并 nums2 到 nums1 中，使合并后的数组同样按 非递减顺序 排列。
  *
@@ -23,17 +22,18 @@ public class _88_合并两个有序数组 {
 	 * nums1数组更大，nums2合并到nums1，从尾部开始比较
 	 */
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
-		//i1是nums1的最后一个元素下标 ， i2是nums2的最后一个元素下标
+		//i1是nums1的待比较元素的下标 ， i2是nums2的待比较元素的下标
 		//cur指向nums1的可以放的位置
 		int i1 = m - 1 , i2 = n - 1, cur = nums1.length - 1;
 		//i2结束，剩下的nums1不用动了
 		while (i2 >= 0) {
 			//存在l1可能为空的情况，需要判断
-			//因为l1的值比较大，填充
+			//如果l1的值比较大，直接在nums1上填充
 			if (i1 >= 0 && nums1[i1] >= nums2[i2]) {
 				nums1[cur] = nums1[i1];
 				i1--;
 				cur--;
+		//如果l1已经结束 或者 l2的值比较大，这两种情况都是让num去填充
 			} else {
 				nums1[cur] = nums2[i2];
 				i2--;

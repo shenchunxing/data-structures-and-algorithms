@@ -1,18 +1,26 @@
 package 树;
 
+import com.mj.printer.LevelOrderPrinter;
+
 import common.TreeNode;
 
 /**
  * https://leetcode.cn/problems/ping-heng-er-cha-shu-lcof/
  */
 public class 剑指Offer55_II_平衡二叉树 {
-    //先序遍历+判断深度
+
     public boolean isBalanced2(TreeNode root) {
         if (root == null) return true;
+        /**
+         * 需要满足3个条件：
+         *  1.以root为根节点的二叉树是平衡树
+         *  2.root的左节点为根节点的二叉树是平衡树
+         *  3.root的右节点为根节点的二叉树是平衡树
+         */
         return Math.abs(depth(root.left) - depth(root.right)) <= 1 && isBalanced2(root.left) && isBalanced2(root.right);
     }
 
-    //当前节点的深度
+    /*获取节点的深度*/
     private int depth(TreeNode root) {
         if (root == null) return 0;
         return Math.max(depth(root.left),depth((root.right))) + 1;

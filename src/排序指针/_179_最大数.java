@@ -5,7 +5,6 @@ import java.util.Comparator;
 
 /**
  * https://leetcode.cn/problems/largest-number/
- * 难度：中等
  * 给定一组非负整数 nums，重新排列每个数的顺序（每个数不可拆分）使之组成一个最大的整数。
  * 注意：输出结果可能非常大，所以你需要返回一个字符串而不是整数。
  */
@@ -16,8 +15,9 @@ public class _179_最大数 {
     }
    static public String largestNumber(int[] nums) {
         String[] strings = new String[nums.length];
+        /*因为最后要返回String，直接将nums数组转成string数组*/
         for (int i = 0; i < nums.length; i ++) {
-            strings[i] = String.valueOf(nums[i]); //数字转字符串
+            strings[i] = String.valueOf(nums[i]);
         }
         //从大到小排序
         Arrays.sort(strings, new Comparator<String>() {
@@ -31,7 +31,7 @@ public class _179_最大数 {
         });
         if (strings[0].equals("0")) return "0";
 
-        //拼接
+        //将排序后的字符串拼接
         String largestNumberStr = new String();
         for (String numStr : strings) {
             largestNumberStr += numStr;

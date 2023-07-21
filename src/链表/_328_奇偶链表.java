@@ -29,6 +29,7 @@ public class _328_奇偶链表 {
         //偶数链表
         ListNode even = head.next;
         //保留偶数链表头
+        /*因为循环里面的第一步就是odd.next = even.next;需要满足even != null && even.next != null*/
         ListNode evenHead = even;
         while (even != null && even.next != null) {
             /*奇数串起来*/

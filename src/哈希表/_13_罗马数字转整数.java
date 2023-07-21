@@ -5,11 +5,24 @@ import java.util.Map;
 
 /**
  * https://leetcode-cn.com/problems/roman-to-integer/
- * @author shenchunxing
+ * 罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
+ * 例如， 罗马数字 2 写做II，即为两个并列的 1 。12 写做XII，即为X+II。 27 写做XXVII, 即为XX+V+II。
  *
+ * 通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做IIII，而是IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为IX。这个特殊的规则只适用于以下六种情况：
+ *
+ * I可以放在V(5) 和X(10) 的左边，来表示 4 和 9。
+ * X可以放在L(50) 和C(100) 的左边，来表示 40 和90。
+ * C可以放在D(500) 和M(1000) 的左边，来表示400 和900。
+ * 给定一个罗马数字，将其转换成整数。
  */
 public class _13_罗马数字转整数 {
-	public int romanToInt(String s) {
+	public static void main(String[] args) {
+		System.out.println(romanToInt("III"));//3
+		System.out.println(romanToInt("IV"));//4 = -1 + 5
+		System.out.println(romanToInt("IX"));//9 = -1 + 10
+		System.out.println(romanToInt("LVIII"));//58 = 50 +5 + 1 + 1 + 1
+	}
+	static public int romanToInt(String s) {
 
 		Map<Character, Integer> map = new HashMap<>();
 		map.put('I', 1);
@@ -21,13 +34,10 @@ public class _13_罗马数字转整数 {
 		map.put('M', 1000);
 		
 		int ans = 0;
-		/**
-		 * 通常情况下，罗马数字中小的数字在大的数字的右边。若输入的字符串满足该情况，那么可以将每个字符视作一个单独的值，累加每个字符对应的数值即可
-		 * 若存在小的数字在大的数字的左边的情况，根据规则需要减去小的数字。对于这种情况，我们也可以将每个字符视作一个单独的值，若一个数字右侧的数字比它大，则将该数字的符号取反。
-		 */
 		for (int i = 0; i < s.length(); i++) {
 			int value = map.get(s.charAt(i));
-			//左边数小于右边，则取反
+			//找一个规律：下一个的数比当前要大，就取负数，否则就取正数，因为要取下一个数s.charAt(i + 1)，
+			// 所以i的取值需要满足i < s.length() - 1
 			if (i < s.length() - 1 && value < map.get(s.charAt(i + 1))) {
 				ans -= value;
 				//左边数大于右边，则顺序相加

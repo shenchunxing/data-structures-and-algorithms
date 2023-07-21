@@ -2,6 +2,8 @@ package 位运算;
 
 /**
  * https://leetcode-cn.com/problems/powx-n/
+ * 难度：中等
+ * 实现 pow(x, n) ，即计算 x 的整数 n 次幂函数（即，xn ）。
  */
 public class _50_Pow {
 

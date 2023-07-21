@@ -2,6 +2,10 @@ package 数学;
 
 /**
  * https://leetcode-cn.com/problems/reverse-integer/
+ * 难度：中等
+ * 给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+ * 如果反转后整数超过 32 位的有符号整数的范围[−231, 231− 1] ，就返回 0。
+ * 假设环境不允许存储 64 位整数（有符号或无符号）。
  */
 /*2023-7-4*/
 public class _7_整数反转 {
@@ -13,7 +17,7 @@ public class _7_整数反转 {
        int ans = 0;
        while (x != 0) {
            if (ans > Integer.MAX_VALUE / 10 || (ans  < Integer.MIN_VALUE / 10)) return 0; //用除法防止越界
-           int digital = x % 10; //分离出最右那位
+           int digital = x % 10; //每轮循环分离出最右那位
            x /= 10;//去掉最右那位
            ans = 10 * ans + digital;//得到部分解
        }

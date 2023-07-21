@@ -5,29 +5,35 @@ import java.util.Map;
 
 /**
  * https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
- * 
- * @author MJ
- *
+ * 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度
  */
 public class _3_无重复字符的最长子串 {
 	public static void main(String[] args) {
 //		System.out.println(lengthOfLongestSubstring(new String("abcabccd")));
-		System.out.println(lengthOfLongestSubstring(new String("abcbc")));
+//		System.out.println(lengthOfLongestSubstring(new String("abcbc")));//3
+		System.out.println(lengthOfLongestSubstring(new String("abba")));//2
 //		System.out.println(lengthOfLongestSubstring(new String("abbbbcd")));
 	}
 
-	//滑动窗口：维护一个不重复元素的队列，一旦出现重复，移除左边元素至重复元素的下一位
+	//滑动窗口：维护一个不重复元素的队列
 	static public int lengthOfLongestSubstring(String s) {
 		if (s.length() == 0) return 0;
 		Map<Character,Integer> map = new HashMap<>();
+		/*left表示不重复的子串的左边界*/
 		int max = 0 , left = 0;
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			if (map.containsKey(c)) { //重复了，更新最左侧不重复的坐标位置，此处为了让队列是不重复的，从重复位置的下一个取值，作为左边界
+			/*为什么这里出现重复不能直接取left = map.get(c) + 1;？
+			因为可能存在边界后退的问题。如'abba'，按照上面的写发，第二次出现的'a'，left = map.get(c) + 1 = 1；但是实际上第二次出现的'b'的时候
+			left已经是map.get(c) + 1 = 2了。出现了后退的情况。会把第二次出现的'b'也算入长度。所以在更新的时候，一定要取最右的那个值
+			* */
+			if (map.containsKey(c)) {
 				left = Math.max(left,map.get(c) + 1);
 			}
+			/*记录字符及其位置*/
 			map.put(c,i);
-			max = Math.max(max,i - left + 1);//更新长度
+			/*每次遍历过程中更新最大长度*/
+			max = Math.max(max,i - left + 1);
 		}
 		return max;
 	}

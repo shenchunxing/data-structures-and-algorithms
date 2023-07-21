@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * https://leetcode-cn.com/problems/permutations/
+ * 难度：中等
+ * 给定一个不含重复数字的数组 nums ，返回其 所有可能的全排列 。你可以 按任意顺序 返回答案。
  */
 
 /*2023-7-4*/

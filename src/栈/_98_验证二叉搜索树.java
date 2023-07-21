@@ -24,7 +24,8 @@ public class _98_验证二叉搜索树 {
    static public boolean isValidBST(TreeNode root) {
         if (root == null) return true;
         Stack<TreeNode> stack = new Stack<>();
-        double inorder = -Double.MAX_VALUE;//默认最小值
+        /*记录上一次遍历到的节点值，需要和当前节点进行比较，默认最小值*/
+        double inorder = -Double.MAX_VALUE;
         while (!stack.isEmpty() || root != null) {
             /*先左到底，将左节点和左子节点全部入栈*/
             while (root != null) {

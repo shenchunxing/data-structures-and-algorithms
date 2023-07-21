@@ -4,6 +4,7 @@ import common.ListNode;
 
 /**
  * https://leetcode-cn.com/problems/merge-k-sorted-lists/
+ * 难度：困难
  * @author shenchunxing
  *
  */

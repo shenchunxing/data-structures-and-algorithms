@@ -6,11 +6,23 @@ import common.ListNode;
  * https://leetcode.cn/problems/reorder-list/
  */
 public class _143_重排链表 {
+    public static void main(String[] args) {
+        _143_重排链表 obj = new _143_重排链表();
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        /*重排*/
+        obj.reorderList(head);
+
+        System.out.println(head);
+    }
     /**
      * 1 -> 2 -> 3 -> 4 -> 5
      * 1 -> 5 -> 2 -> 4 -> 3
      * 目标链表即为将原链表的左半端和反转后的右半端合并后的结果
-     * @param head
      */
     //O(n) O(1)
     public void reorderList(ListNode head) {
