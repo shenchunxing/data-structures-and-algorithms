@@ -1,5 +1,11 @@
 package 数学;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * https://leetcode-cn.com/problems/reverse-integer/
  * 难度：中等
@@ -9,9 +15,11 @@ package 数学;
  */
 /*2023-7-4*/
 public class _7_整数反转 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println(reverse(123));
     }
+
+
     //数学：时间复杂度O(logN),空间复杂度O(1)
     public static int reverse(int x) {
        int ans = 0;
@@ -46,4 +54,17 @@ public class _7_整数反转 {
         }
         return res;
     }
+
+    //牛客网
+    //整数反转
+    public static void main1() throws IOException {
+        InputStreamReader reader = new InputStreamReader(System.in);
+        BufferedReader br=new BufferedReader(reader);
+        String str = br.readLine();
+        char[] c=str.toCharArray();
+        for (int i=c.length-1;i>=0;i--){
+            System.out.print(c[i]);
+        }
+    }
+
 }
