@@ -29,6 +29,7 @@ public class HJ26_字符串排序 {
         while((line = br.readLine())!=null){
             char[] ch =line.toCharArray();
             char[] cop = new char[ch.length];
+            /*数组中的偏移位置*/
             int offset = 0;
             for(int i='A';i<='Z';i++){
                 for(int j=0;j<ch.length;j++){
@@ -39,14 +40,15 @@ public class HJ26_字符串排序 {
                     }
                 }
             }
+            /*至此已经拍好序了*/
             offset = 0;
-            /*cop只记录了字母的位置和值，并不包括非字母*/
-            /*这里这么做是为了非字母也可以填充进去*/
+            /*修改数组的值*/
             for(int i=0;i<ch.length;i++){
                 if((ch[i]>='A' && ch[i]<='Z')||(ch[i]>='a'&&ch[i]<='z')){
                     ch[i] = cop[offset++];
                 }
             }
+            /*打印字符数组*/
             System.out.println(String.valueOf(ch));
         }
     }

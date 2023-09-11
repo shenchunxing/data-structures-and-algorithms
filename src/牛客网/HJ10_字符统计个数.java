@@ -16,6 +16,7 @@ public class HJ10_字符统计个数 {
         int count=0;
         for(int i=0;i<s.length();i++){
             char b = s.charAt(i);
+            /*发现字符数为0，count++，并改成1*/
             if(a[b]==0){
                 count++;
                 a[b]=1;

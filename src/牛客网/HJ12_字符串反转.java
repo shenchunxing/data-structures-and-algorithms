@@ -11,8 +11,7 @@ import java.util.Arrays;
  */
 public class HJ12_字符串反转 {
     public static void main(String[] args) throws IOException {
-        InputStreamReader reader = new InputStreamReader(System.in);
-        BufferedReader br=new BufferedReader(reader);
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
         String str = br.readLine();
         char[] c=str.toCharArray();
         for (int i=c.length-1;i>=0;i--){

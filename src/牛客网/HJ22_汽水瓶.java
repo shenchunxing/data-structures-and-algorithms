@@ -4,12 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * File: null.java
- * Author: shenchunxing
- * Date: 2023/8/1
  * 某商店规定：三个空汽水瓶可以换一瓶汽水，允许向老板借空汽水瓶（但是必须要归还）。
  * 小张手上有n个空汽水瓶，她想知道自己最多可以喝到多少瓶汽水。
- * 数据范围：输入的正整数满足 1 \le n \le 100 \1≤n≤100
  *
  * 注意：本题存在多组输入。输入的 0 表示输入结束，并不用输出结果。
  */
@@ -17,7 +13,6 @@ public class HJ22_汽水瓶 {
     public static void main(String[] args)throws Exception{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = null;
-
         while((str = br.readLine())!= null){
             int g = 0;
             g = Integer.parseInt(str);

@@ -4,9 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 /**
- * File: null.java
- * Author: shenchunxing
- * Date: 2023/8/4
  * 对输入的字符串进行加解密，并输出。
  *
  * 加密方法为：

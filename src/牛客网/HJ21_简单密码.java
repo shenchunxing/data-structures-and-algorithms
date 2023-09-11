@@ -17,12 +17,11 @@ public class HJ21_简单密码 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = br.readLine();
-
         StringBuffer sb = new StringBuffer();
+        /*模拟*/
         for (int i = 0; i < str.length(); i++) {
             //获取第i个字符
             char c = str.charAt(i);
-            //判断，处理
             if (c >= 'A' && c < 'Z') {
                 c = (char) (c + 'b' - 'A');
             } else if (c == 'Z') {

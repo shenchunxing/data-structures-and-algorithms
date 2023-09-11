@@ -21,18 +21,15 @@ public class HJ20_密码验证合格程序 {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String input = null;
         StringBuffer sb = new StringBuffer();
-
         while (null != (input = reader.readLine())) {
             //设置四种类型数据初始为空即false，有数据了就更改为true
             boolean[] flag = new boolean[4];
             char[] chars = input.toCharArray();
-
             // 第一个条件
             if (chars.length < 9) {
                 sb.append("NG").append("\n");
                 continue;
             }
-
             // 第二个条件
             for (int i = 0; i < chars.length; i++) {
                 if ('A' <= chars[i] && chars[i] <= 'Z') {

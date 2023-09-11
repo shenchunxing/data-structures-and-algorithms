@@ -26,7 +26,7 @@ public class HJ23_删除字符串中出现次数最少的字符 {
                 if(cnt > 0 && cnt < minCount) minCount = cnt;
             }
             for(char c : arr){
-                /*如果不是最小值，就拼接到结果*/
+                /*如果不是最小值，就拼接到结果，否则跳过*/
                 if(letters[c - 'a'] == minCount) continue;
                 sb.append(c);
             }

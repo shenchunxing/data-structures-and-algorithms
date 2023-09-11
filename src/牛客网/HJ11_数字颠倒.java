@@ -1,7 +1,9 @@
 package 牛客网;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  * File: null.java
@@ -12,13 +14,23 @@ import java.io.InputStream;
  */
 public class HJ11_数字颠倒 {
     public static void main(String[] args) throws IOException {
-        InputStream is = System.in;
-        int available = is.available() - 1;
-        char[] arr = new char[available];
-        while (available-- > 0) {
-            arr[available] = (char)is.read();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String s = reader.readLine();
+        int n = s.length();
+        char[] chars = s.toCharArray();
+        reverse(0,n- 1,chars);
+        System.out.println(chars);
+    }
+
+    private static void reverse(int start, int end, char[] chars) {
+        while (start < end) {
+            // 交换首尾字符
+            char temp = chars[start];
+            chars[start] = chars[end];
+            chars[end] = temp;
+            // 移动索引
+            start++;
+            end--;
         }
-        String result = String.valueOf(arr);
-        System.out.println(result);
     }
 }
